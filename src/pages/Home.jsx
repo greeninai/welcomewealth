@@ -1,40 +1,45 @@
 import React from 'react';
 import { Shield, BookOpen, Target, Lock, Award, TrendingUp, PieChart, Heart, ArrowRight, CheckCircle, Users, Globe } from 'lucide-react';
+import { useLanguage } from '../components/LanguageContext';
+import { homeTranslations } from '../translations/home';
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = homeTranslations[language] || homeTranslations.en;
+
   const trustSignals = [
-    { icon: BookOpen, text: 'Educational only', color: '#d86c00' },
-    { icon: Shield, text: 'Privacy-first', color: '#1152d4' },
-    { icon: Lock, text: 'No financial advice', color: '#188a42' },
-    { icon: Award, text: 'No selling, no ads', color: '#d86c00' },
+    { icon: BookOpen, text: t.trustSignals.educational, color: '#d86c00' },
+    { icon: Shield, text: t.trustSignals.privacy, color: '#1152d4' },
+    { icon: Lock, text: t.trustSignals.noAdvice, color: '#188a42' },
+    { icon: Award, text: t.trustSignals.noAds, color: '#d86c00' },
   ];
 
   const howItWorks = [
     {
       step: '1',
-      title: 'Learn the basics',
-      description: 'Understand Canadian finances at your own pace with plain-language education',
+      title: t.howItWorks.steps[0].title,
+      description: t.howItWorks.steps[0].description,
       icon: BookOpen,
       color: '#d86c00'
     },
     {
       step: '2',
-      title: 'Build your budget',
-      description: 'Create a simple, personal budget that works for your life',
+      title: t.howItWorks.steps[1].title,
+      description: t.howItWorks.steps[1].description,
       icon: PieChart,
       color: '#1152d4'
     },
     {
       step: '3',
-      title: 'Set your goals',
-      description: 'Define what financial success means to you (completely optional)',
+      title: t.howItWorks.steps[2].title,
+      description: t.howItWorks.steps[2].description,
       icon: Target,
       color: '#188a42'
     },
     {
       step: '4',
-      title: 'Grow at your pace',
-      description: 'Access trusted education content whenever you\'re ready',
+      title: t.howItWorks.steps[3].title,
+      description: t.howItWorks.steps[3].description,
       icon: TrendingUp,
       color: '#d86c00'
     },
@@ -42,18 +47,18 @@ export default function Home() {
 
   const appFeatures = [
     {
-      title: 'Budget Builder',
-      description: 'Simple tools to track income and expenses without complexity',
+      title: t.appPreview.features[0].title,
+      description: t.appPreview.features[0].description,
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80'
     },
     {
-      title: 'Learn Hub',
-      description: 'Plain-language guides on banking, credit, taxes, and more',
+      title: t.appPreview.features[1].title,
+      description: t.appPreview.features[1].description,
       image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80'
     },
     {
-      title: 'Your Privacy',
-      description: 'Full control over your data. No sharing. No selling. Ever.',
+      title: t.appPreview.features[2].title,
+      description: t.appPreview.features[2].description,
       image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80'
     },
   ];
@@ -70,13 +75,13 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Understand your money.
+              {t.hero.title}
               <br />
-              <span className="text-[#1152d4]">At your pace. On your terms.</span>
+              <span className="text-[#1152d4]">{t.hero.titleHighlight}</span>
             </h1>
             
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-              WelcomeWealth is a free, educational platform designed to help you navigate everyday finances in Canada — <span className="font-medium">without ads, pressure, or selling your data.</span>
+              {t.hero.subtitle}
             </p>
 
             {/* CTAs */}
@@ -87,8 +92,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-4 bg-[#1152d4] text-white rounded-xl text-lg font-medium hover:bg-[#0d3da3] transition-all shadow-lg hover:shadow-xl"
               >
-                Download for iOS
-                <ArrowRight className="ml-2 w-5 h-5" />
+                {t.hero.ctaIOS}
+                <ArrowRight className={language === 'ar' ? 'mr-2 w-5 h-5 rotate-180' : 'ml-2 w-5 h-5'} />
               </a>
               <a
                 href="https://play.google.com"
@@ -96,7 +101,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-4 bg-white text-[#1152d4] border-2 border-[#1152d4] rounded-xl text-lg font-medium hover:bg-blue-50 transition-all"
               >
-                Download for Android
+                {t.hero.ctaAndroid}
               </a>
             </div>
 
@@ -123,10 +128,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              How WelcomeWealth works
+              {t.howItWorks.title}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A simple, supportive path to financial confidence
+              {t.howItWorks.subtitle}
             </p>
           </div>
 
@@ -160,10 +165,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Built for you, not for profit
+              {t.appPreview.title}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Everything you need to understand your finances, with nothing you don't
+              {t.appPreview.subtitle}
             </p>
           </div>
 
@@ -189,23 +194,17 @@ export default function Home() {
           <div className="mt-16 bg-gradient-to-br from-[#1152d4] to-[#0d3da3] rounded-3xl p-8 md:p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="text-white">
-                <h3 className="text-3xl font-bold mb-4">See it in action</h3>
+                <h3 className="text-3xl font-bold mb-4">{t.appPreview.seeInAction}</h3>
                 <p className="text-blue-100 text-lg leading-relaxed mb-6">
-                  The WelcomeWealth app puts you in control with intuitive tools, clear guidance, and complete privacy.
+                  {t.appPreview.seeInActionDesc}
                 </p>
                 <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-blue-100">Track your budget in minutes, not hours</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-blue-100">Learn about credit, taxes, and savings at your pace</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-blue-100">Keep your data private and secure, always</span>
-                  </li>
+                  {t.appPreview.benefits.map((benefit, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <CheckCircle className={`w-6 h-6 ${language === 'ar' ? 'ml-3' : 'mr-3'} flex-shrink-0 mt-0.5`} />
+                      <span className="text-blue-100">{benefit}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="flex justify-center">
@@ -229,17 +228,17 @@ export default function Home() {
                 <Users className="w-8 h-8 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Need specialized help?
+                {t.trustedSupport.title}
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                We can point you to <span className="font-medium text-[#188a42]">trusted, verified support</span> — when you choose. No pressure. No selling. Just guidance when you need it.
+                {t.trustedSupport.description}
               </p>
               <a
                 href="/partners"
                 className="inline-flex items-center px-8 py-4 bg-[#188a42] text-white rounded-xl text-lg font-medium hover:bg-[#146835] transition-all shadow-lg hover:shadow-xl"
               >
-                Explore Trusted Partners
-                <ArrowRight className="ml-2 w-5 h-5" />
+                {t.trustedSupport.cta}
+                <ArrowRight className={language === 'ar' ? 'mr-2 w-5 h-5 rotate-180' : 'ml-2 w-5 h-5'} />
               </a>
             </div>
           </div>
@@ -251,19 +250,19 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Built for everyone
+              {t.whoItsFor.title}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Especially those who need it most
+              {t.whoItsFor.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Globe, title: 'Newcomers to Canada', desc: 'Navigate a new financial system with confidence' },
-              { icon: Users, title: 'Immigrants & refugees', desc: 'Understanding Canadian finances in plain language' },
-              { icon: Heart, title: 'Young adults', desc: 'Build financial habits that last a lifetime' },
-              { icon: BookOpen, title: 'Lifelong learners', desc: 'Never too late to understand your money better' },
+              { icon: Globe, ...t.whoItsFor.audiences[0] },
+              { icon: Users, ...t.whoItsFor.audiences[1] },
+              { icon: Heart, ...t.whoItsFor.audiences[2] },
+              { icon: BookOpen, ...t.whoItsFor.audiences[3] },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -282,10 +281,10 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-gradient-to-br from-[#1152d4] to-[#0d3da3]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to take control?
+            {t.finalCTA.title}
           </h2>
           <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Join thousands of Canadians building financial confidence, one step at a time.
+            {t.finalCTA.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -294,8 +293,8 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-4 bg-white text-[#1152d4] rounded-xl text-lg font-medium hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
             >
-              Download for iOS
-              <ArrowRight className="ml-2 w-5 h-5" />
+              {t.hero.ctaIOS}
+              <ArrowRight className={language === 'ar' ? 'mr-2 w-5 h-5 rotate-180' : 'ml-2 w-5 h-5'} />
             </a>
             <a
               href="https://play.google.com"
@@ -303,11 +302,11 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl text-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all"
             >
-              Download for Android
+              {t.hero.ctaAndroid}
             </a>
           </div>
           <p className="text-sm text-blue-200 mt-6">
-            Free forever. No credit card required. No hidden fees.
+            {t.finalCTA.footer}
           </p>
         </div>
       </section>
