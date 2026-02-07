@@ -61,7 +61,7 @@ export default function App() {
     {
       icon: Eye,
       title: 'Full transparency',
-      description: 'We tell you exactly what data we collect, why we collect it, and how it's used.',
+      description: 'We tell you exactly what data we collect, why we collect it, and how it is used.',
       color: '#d86c00'
     },
     {
