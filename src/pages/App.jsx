@@ -67,7 +67,7 @@ export default function App() {
     {
       icon: EyeOff,
       title: 'No tracking or profiling',
-      description: 'We don't track your behavior across devices or create marketing profiles.',
+      description: 'We do not track your behavior across devices or create marketing profiles.',
       color: '#1152d4'
     },
   ];
