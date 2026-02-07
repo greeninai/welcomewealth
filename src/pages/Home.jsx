@@ -1,7 +1,7 @@
 import React from 'react';
 import { Shield, BookOpen, Target, Lock, Award, TrendingUp, PieChart, Heart, ArrowRight, CheckCircle, Users, Globe } from 'lucide-react';
 import { useLanguage } from '../components/LanguageContext';
-import { homeTranslations } from '../components/translations';
+import { homeTranslations } from '../components/translations.js';
 
 export default function Home() {
   const { language } = useLanguage();
