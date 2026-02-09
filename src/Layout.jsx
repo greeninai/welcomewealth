@@ -26,10 +26,11 @@ export default function Layout({ children, currentPageName }) {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-[#1152d4] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">W</span>
-              </div>
-              <span className="text-xl font-semibold text-gray-900">WelcomeWealth</span>
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/f35f84552_WelcomeWealth_Logo.png" 
+                alt="WelcomeWealth"
+                className="h-8 md:h-10"
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -184,11 +185,12 @@ export default function Layout({ children, currentPageName }) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="md:col-span-1">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-[#1152d4] rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">W</span>
-                </div>
-                <span className="text-lg font-semibold text-gray-900">WelcomeWealth</span>
+              <div className="mb-4">
+                <img 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/f35f84552_WelcomeWealth_Logo.png" 
+                  alt="WelcomeWealth"
+                  className="h-8"
+                />
               </div>
               <p className="text-sm text-gray-600 leading-relaxed">
                 Financial education for everyone. Privacy-first. Ad-free. No pressure.

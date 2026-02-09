@@ -45,6 +45,11 @@ export default function About() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-white to-blue-50 py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <img 
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/9391760f3_WelcomeWealth_Symbol.png" 
+            alt="WelcomeWealth Symbol"
+            className="w-24 h-24 mx-auto mb-8"
+          />
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             About WelcomeWealth
           </h1>
