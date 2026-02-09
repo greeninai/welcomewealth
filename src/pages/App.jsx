@@ -79,6 +79,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/9391760f3_WelcomeWealth_Symbol.png" 
+                alt="WelcomeWealth Symbol"
+                className="w-20 h-20 mb-6"
+              />
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 The WelcomeWealth App
               </h1>
