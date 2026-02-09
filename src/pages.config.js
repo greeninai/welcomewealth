@@ -52,6 +52,7 @@ import App from './pages/App';
 import Home from './pages/Home';
 import PartnerApplication from './pages/PartnerApplication';
 import Partners from './pages/Partners';
+import Transparency from './pages/Transparency';
 import __Layout from './Layout.jsx';
 
 
@@ -61,6 +62,7 @@ export const PAGES = {
     "Home": Home,
     "PartnerApplication": PartnerApplication,
     "Partners": Partners,
+    "Transparency": Transparency,
 }
 
 export const pagesConfig = {
