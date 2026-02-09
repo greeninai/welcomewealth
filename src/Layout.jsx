@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Home, Info, Smartphone, Users, DollarSign, FileText } from 'lucide-react';
+import { Home, Info, Smartphone, Users, DollarSign, FileText, ChevronDown } from 'lucide-react';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { LanguageProvider } from './components/LanguageContext';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [partnersDropdownOpen, setPartnersDropdownOpen] = React.useState(false);
 
   const navigation = [
     { name: 'Home', path: 'Home', icon: Home },
@@ -33,19 +34,56 @@ export default function Layout({ children, currentPageName }) {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={createPageUrl(item.path)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    currentPageName === item.path
-                      ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4]'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) => {
+                if (item.name === 'Trusted Partners') {
+                  return (
+                    <div key={item.name} className="relative">
+                      <button
+                        onClick={() => setPartnersDropdownOpen(!partnersDropdownOpen)}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center ${
+                          currentPageName === 'Partners' || currentPageName === 'PartnerApplication'
+                            ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4]'
+                            : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDown className="ml-1 w-4 h-4" />
+                      </button>
+                      {partnersDropdownOpen && (
+                        <div className="absolute top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-[200px] z-50">
+                          <Link
+                            to={createPageUrl('Partners')}
+                            onClick={() => setPartnersDropdownOpen(false)}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Partner Directory
+                          </Link>
+                          <Link
+                            to={createPageUrl('PartnerApplication')}
+                            onClick={() => setPartnersDropdownOpen(false)}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Apply as Partner
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+                return (
+                  <Link
+                    key={item.name}
+                    to={createPageUrl(item.path)}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      currentPageName === item.path
+                        ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4]'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
               <LanguageSwitcher />
               <a
                 href="#download"
@@ -76,20 +114,50 @@ export default function Layout({ children, currentPageName }) {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 bg-white">
             <div className="px-4 py-3 space-y-1">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={createPageUrl(item.path)}
-                  className={`block px-4 py-3 rounded-lg text-base font-medium ${
-                    currentPageName === item.path
-                      ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4]'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) => {
+                if (item.name === 'Trusted Partners') {
+                  return (
+                    <div key={item.name}>
+                      <Link
+                        to={createPageUrl('Partners')}
+                        className={`block px-4 py-3 rounded-lg text-base font-medium ${
+                          currentPageName === 'Partners'
+                            ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4]'
+                            : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Partner Directory
+                      </Link>
+                      <Link
+                        to={createPageUrl('PartnerApplication')}
+                        className={`block px-4 py-3 rounded-lg text-base font-medium ${
+                          currentPageName === 'PartnerApplication'
+                            ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4]'
+                            : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Apply as Partner
+                      </Link>
+                    </div>
+                  );
+                }
+                return (
+                  <Link
+                    key={item.name}
+                    to={createPageUrl(item.path)}
+                    className={`block px-4 py-3 rounded-lg text-base font-medium ${
+                      currentPageName === item.path
+                        ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4]'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
               <div className="px-4 py-2">
                 <LanguageSwitcher />
               </div>
