@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import { Shield, Award, Users, Building2, BookOpen, CheckCircle, ExternalLink, Mail } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { Shield, Award, Users, Building2, BookOpen, CheckCircle, ExternalLink, Mail, Search, X, MapPin, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 export default function Partners() {
   const [showContactForm, setShowContactForm] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedService, setSelectedService] = useState('all');
+  const [selectedLocation, setSelectedLocation] = useState('all');
+  const [selectedLanguage, setSelectedLanguage] = useState('all');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,9 +39,24 @@ export default function Partners() {
       description: 'Non-profit and community organizations focused on financial literacy and education',
       icon: BookOpen,
       color: '#d86c00',
+      category: 'education',
       partners: [
-        { name: 'Example Financial Literacy Center', verified: true, website: '#' },
-        { name: 'Community Finance Education', verified: true, website: '#' },
+        { 
+          name: 'Example Financial Literacy Center', 
+          verified: true, 
+          website: '#',
+          services: ['Budgeting Workshops', 'Credit Education', 'Debt Management'],
+          location: 'Toronto, ON',
+          languages: ['English', 'French', 'Spanish']
+        },
+        { 
+          name: 'Community Finance Education', 
+          verified: true, 
+          website: '#',
+          services: ['Financial Planning', 'Investment Basics', 'Tax Education'],
+          location: 'Vancouver, BC',
+          languages: ['English', 'Mandarin', 'Cantonese']
+        },
       ]
     },
     {
@@ -44,9 +64,24 @@ export default function Partners() {
       description: 'Certified financial planners, advisors, and professionals with proper credentials',
       icon: Award,
       color: '#1152d4',
+      category: 'professional',
       partners: [
-        { name: 'Example Financial Planning Group', verified: true, website: '#' },
-        { name: 'Certified Advisory Services', verified: true, website: '#' },
+        { 
+          name: 'Example Financial Planning Group', 
+          verified: true, 
+          website: '#',
+          services: ['Retirement Planning', 'Investment Management', 'Estate Planning'],
+          location: 'Montreal, QC',
+          languages: ['English', 'French']
+        },
+        { 
+          name: 'Certified Advisory Services', 
+          verified: true, 
+          website: '#',
+          services: ['Financial Planning', 'Tax Planning', 'Insurance Advice'],
+          location: 'Calgary, AB',
+          languages: ['English', 'Punjabi']
+        },
       ]
     },
     {
@@ -54,12 +89,102 @@ export default function Partners() {
       description: 'Organizations supporting newcomers, immigrants, and underserved communities',
       icon: Users,
       color: '#188a42',
+      category: 'community',
       partners: [
-        { name: 'Newcomer Settlement Services', verified: true, website: '#' },
-        { name: 'Immigrant Resource Center', verified: true, website: '#' },
+        { 
+          name: 'Newcomer Settlement Services', 
+          verified: true, 
+          website: '#',
+          services: ['Settlement Support', 'Banking Guidance', 'Credit Building'],
+          location: 'Ottawa, ON',
+          languages: ['English', 'French', 'Arabic', 'Somali']
+        },
+        { 
+          name: 'Immigrant Resource Center', 
+          verified: true, 
+          website: '#',
+          services: ['Integration Support', 'Financial Literacy', 'Employment Guidance'],
+          location: 'Edmonton, AB',
+          languages: ['English', 'Tagalog', 'Vietnamese']
+        },
       ]
     },
   ];
+
+  // Extract unique values for filters
+  const allServices = useMemo(() => {
+    const services = new Set();
+    partnerCategories.forEach(cat => {
+      cat.partners.forEach(partner => {
+        partner.services.forEach(service => services.add(service));
+      });
+    });
+    return Array.from(services).sort();
+  }, []);
+
+  const allLocations = useMemo(() => {
+    const locations = new Set();
+    partnerCategories.forEach(cat => {
+      cat.partners.forEach(partner => {
+        if (partner.location) locations.add(partner.location);
+      });
+    });
+    return Array.from(locations).sort();
+  }, []);
+
+  const allLanguages = useMemo(() => {
+    const languages = new Set();
+    partnerCategories.forEach(cat => {
+      cat.partners.forEach(partner => {
+        partner.languages.forEach(lang => languages.add(lang));
+      });
+    });
+    return Array.from(languages).sort();
+  }, []);
+
+  // Filter partners based on all criteria
+  const filteredCategories = useMemo(() => {
+    return partnerCategories.map(category => {
+      const filteredPartners = category.partners.filter(partner => {
+        // Search query filter
+        const matchesSearch = searchQuery === '' || 
+          partner.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          partner.services.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
+
+        // Category filter
+        const matchesCategory = selectedCategory === 'all' || category.category === selectedCategory;
+
+        // Service filter
+        const matchesService = selectedService === 'all' || 
+          partner.services.includes(selectedService);
+
+        // Location filter
+        const matchesLocation = selectedLocation === 'all' || 
+          partner.location === selectedLocation;
+
+        // Language filter
+        const matchesLanguage = selectedLanguage === 'all' || 
+          partner.languages.includes(selectedLanguage);
+
+        return matchesSearch && matchesCategory && matchesService && matchesLocation && matchesLanguage;
+      });
+
+      return {
+        ...category,
+        partners: filteredPartners
+      };
+    }).filter(category => category.partners.length > 0);
+  }, [searchQuery, selectedCategory, selectedService, selectedLocation, selectedLanguage]);
+
+  const clearFilters = () => {
+    setSearchQuery('');
+    setSelectedCategory('all');
+    setSelectedService('all');
+    setSelectedLocation('all');
+    setSelectedLanguage('all');
+  };
+
+  const activeFiltersCount = [selectedCategory, selectedService, selectedLocation, selectedLanguage].filter(f => f !== 'all').length;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -134,12 +259,142 @@ export default function Partners() {
       {/* Partner Categories & Directory */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
             Partner Directory
           </h2>
+
+          {/* Search and Filters */}
+          <div className="mb-12 space-y-6">
+            {/* Search Bar */}
+            <div className="relative max-w-2xl mx-auto">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Input
+                type="text"
+                placeholder="Search partners by name or services..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-12 pr-10 py-6 text-lg"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
+            </div>
+
+            {/* Filter Grid */}
+            <div className="bg-[#f8f6f8] rounded-xl p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {/* Category Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1152d4] bg-white"
+                  >
+                    <option value="all">All Categories</option>
+                    <option value="education">Financial Education</option>
+                    <option value="professional">Licensed Professionals</option>
+                    <option value="community">Community Support</option>
+                  </select>
+                </div>
+
+                {/* Service Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Service</label>
+                  <select
+                    value={selectedService}
+                    onChange={(e) => setSelectedService(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1152d4] bg-white"
+                  >
+                    <option value="all">All Services</option>
+                    {allServices.map(service => (
+                      <option key={service} value={service}>{service}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Location Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <MapPin className="w-4 h-4 inline mr-1" />
+                    Location
+                  </label>
+                  <select
+                    value={selectedLocation}
+                    onChange={(e) => setSelectedLocation(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1152d4] bg-white"
+                  >
+                    <option value="all">All Locations</option>
+                    {allLocations.map(location => (
+                      <option key={location} value={location}>{location}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Language Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <Globe className="w-4 h-4 inline mr-1" />
+                    Language
+                  </label>
+                  <select
+                    value={selectedLanguage}
+                    onChange={(e) => setSelectedLanguage(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1152d4] bg-white"
+                  >
+                    <option value="all">All Languages</option>
+                    {allLanguages.map(language => (
+                      <option key={language} value={language}>{language}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Active Filters Display */}
+              {(activeFiltersCount > 0 || searchQuery) && (
+                <div className="mt-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-sm text-gray-600">
+                      {filteredCategories.reduce((acc, cat) => acc + cat.partners.length, 0)} partners found
+                    </span>
+                    {activeFiltersCount > 0 && (
+                      <span className="text-sm text-gray-500">
+                        ({activeFiltersCount} filter{activeFiltersCount > 1 ? 's' : ''} active)
+                      </span>
+                    )}
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={clearFilters}
+                    className="text-[#1152d4] hover:text-[#0d3da3]"
+                  >
+                    <X className="w-4 h-4 mr-1" />
+                    Clear all
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
           
-          <div className="space-y-12">
-            {partnerCategories.map((category, index) => {
+          {/* Results */}
+          {filteredCategories.length === 0 ? (
+            <div className="text-center py-12">
+              <Search className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">No partners found</h3>
+              <p className="text-gray-600 mb-6">Try adjusting your filters or search query</p>
+              <Button onClick={clearFilters} variant="outline">
+                Clear all filters
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-12">
+            {filteredCategories.map((category, index) => {
               const Icon = category.icon;
               return (
                 <div key={index}>
@@ -159,9 +414,42 @@ export default function Partners() {
                         <div className="flex items-start justify-between mb-3">
                           <h4 className="text-lg font-bold text-gray-900 flex-1">{partner.name}</h4>
                           {partner.verified && (
-                            <Shield className="w-5 h-5 text-[#188a42] flex-shrink-0 ml-2" />
+                            <Shield className="w-5 h-5 text-[#188a42] flex-shrink-0 ml-2" title="Verified Partner" />
                           )}
                         </div>
+                        
+                        {/* Services */}
+                        <div className="mb-3">
+                          <div className="flex flex-wrap gap-2">
+                            {partner.services.slice(0, 3).map((service, idx) => (
+                              <span key={idx} className="text-xs px-2 py-1 bg-white rounded-full text-gray-700 border border-gray-200">
+                                {service}
+                              </span>
+                            ))}
+                            {partner.services.length > 3 && (
+                              <span className="text-xs px-2 py-1 bg-white rounded-full text-gray-500 border border-gray-200">
+                                +{partner.services.length - 3} more
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Location and Languages */}
+                        <div className="space-y-2 mb-4 text-sm text-gray-600">
+                          {partner.location && (
+                            <div className="flex items-center">
+                              <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
+                              <span>{partner.location}</span>
+                            </div>
+                          )}
+                          {partner.languages && partner.languages.length > 0 && (
+                            <div className="flex items-center">
+                              <Globe className="w-4 h-4 mr-2 flex-shrink-0" />
+                              <span>{partner.languages.join(', ')}</span>
+                            </div>
+                          )}
+                        </div>
+
                         <a
                           href={partner.website}
                           target="_blank"
