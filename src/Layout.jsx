@@ -205,6 +205,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('About')} className="text-sm text-gray-600 hover:text-[#1152d4]">Our Mission</Link></li>
                 <li><Link to={createPageUrl('App')} className="text-sm text-gray-600 hover:text-[#1152d4]">The App</Link></li>
                 <li><Link to={createPageUrl('Transparency')} className="text-sm text-gray-600 hover:text-[#1152d4]">Transparency</Link></li>
+                <li><Link to={createPageUrl('Blog')} className="text-sm text-gray-600 hover:text-[#1152d4]">Blog</Link></li>
               </ul>
             </div>
 
