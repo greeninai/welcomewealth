@@ -49,24 +49,32 @@
  */
 import About from './pages/About';
 import App from './pages/App';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Home from './pages/Home';
 import PartnerApplication from './pages/PartnerApplication';
 import Partners from './pages/Partners';
 import Transparency from './pages/Transparency';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Accessibility from './pages/Accessibility';
+import Disclaimer from './pages/Disclaimer';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "About": About,
     "App": App,
+    "Blog": Blog,
+    "BlogPost": BlogPost,
     "Home": Home,
     "PartnerApplication": PartnerApplication,
     "Partners": Partners,
     "Transparency": Transparency,
-    "Blog": Blog,
-    "BlogPost": BlogPost,
+    "Privacy": Privacy,
+    "Terms": Terms,
+    "Accessibility": Accessibility,
+    "Disclaimer": Disclaimer,
 }
 
 export const pagesConfig = {
