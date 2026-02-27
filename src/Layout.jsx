@@ -15,6 +15,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'The App', path: 'App', icon: Smartphone },
     { name: 'Trusted Partners', path: 'Partners', icon: Users },
     { name: 'Transparency', path: 'Transparency', icon: DollarSign },
+    { name: 'Blog', path: 'Blog', icon: FileText },
   ];
 
   return (
