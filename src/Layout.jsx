@@ -98,9 +98,9 @@ export default function Layout({ children, currentPageName }) {
               <LanguageSwitcher />
               {isAdmin && (
                 <Link
-                  to={createPageUrl('AdminDashboard')}
+                  to={createPageUrl('AdminLogin')}
                   className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
-                  title="Admin Dashboard"
+                  title="Admin Panel"
                 >
                   <LayoutDashboard className="w-4 h-4" />
                   Admin
