@@ -586,8 +586,8 @@ export default function Partners() {
                 </div>
 
                 <div className="flex gap-4">
-                  <Button type="submit" className="flex-1 bg-[#188a42] hover:bg-[#146835]">
-                    Submit Request
+                  <Button type="submit" disabled={leadMutation.isPending} className="flex-1 bg-[#188a42] hover:bg-[#146835]">
+                    {leadMutation.isPending ? 'Sending...' : 'Submit Request'}
                   </Button>
                   <Button
                     type="button"
