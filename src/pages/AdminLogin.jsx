@@ -41,7 +41,7 @@ export default function AdminLogin() {
             Tu cuenta no tiene permisos para acceder al área administrativa.
           </p>
           <p className="text-xs text-gray-400 mb-6">
-            Conectado como: <span className="font-medium text-gray-600">{user.email}</span>
+            Estás conectado con una cuenta no autorizada.
           </p>
           <div className="space-y-3">
             <button
@@ -88,15 +88,12 @@ export default function AdminLogin() {
               Área exclusiva para el equipo de WelcomeWealth.
             </p>
             <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 mb-7 text-left">
-              <p className="text-xs font-semibold text-[#1152d4] mb-1">Acceso permitido únicamente para:</p>
-              <ul className="text-xs text-gray-600 space-y-0.5">
-                <li>• Cuentas con dominio <span className="font-mono font-semibold">@welcomewealth.ca</span></li>
-                <li>• <span className="font-mono font-semibold">greeninco.com@gmail.com</span></li>
-              </ul>
+              <p className="text-xs font-semibold text-[#1152d4] mb-1">Área restringida:</p>
+              <p className="text-xs text-gray-600">Solo el equipo autorizado de WelcomeWealth puede acceder a este panel.</p>
             </div>
 
             <button
-              onClick={() => base44.auth.redirectToLogin(createPageUrl('AdminDashboard'))}
+              onClick={() => base44.auth.redirectToLogin(createPageUrl('AdminLogin'))}
               className="w-full py-3.5 bg-[#1152d4] text-white rounded-xl font-semibold hover:bg-[#0d3da3] transition-colors shadow-md shadow-blue-200 mb-4"
             >
               Iniciar sesión con cuenta autorizada

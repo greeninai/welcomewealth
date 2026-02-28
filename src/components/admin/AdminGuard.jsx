@@ -33,7 +33,8 @@ export default function AdminGuard({ children }) {
   }
 
   if (!user) {
-    base44.auth.redirectToLogin(createPageUrl('AdminLogin'));
+    // Redirect to AdminLogin page which handles the login flow
+    window.location.href = createPageUrl('AdminLogin');
     return null;
   }
 
@@ -44,12 +45,20 @@ export default function AdminGuard({ children }) {
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Shield className="w-8 h-8 text-red-500" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Access Restricted</h1>
-          <p className="text-gray-600 mb-2">This area is restricted to authorized WelcomeWealth administrators only.</p>
-          <p className="text-sm text-gray-400 mb-6">Logged in as: <span className="font-medium text-gray-600">{user.email}</span></p>
-          <Link to={createPageUrl('Home')} className="inline-block px-6 py-3 bg-[#1152d4] text-white rounded-lg font-medium hover:bg-[#0d3da3] transition-colors">
-            Return to Home
-          </Link>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Acceso Restringido</h1>
+          <p className="text-gray-600 mb-2">Esta área es exclusiva para administradores autorizados de WelcomeWealth.</p>
+          <p className="text-sm text-gray-400 mb-6">Estás conectado con una cuenta no autorizada.</p>
+          <div className="space-y-3">
+            <button
+              onClick={() => base44.auth.logout(createPageUrl('AdminLogin'))}
+              className="w-full px-6 py-3 bg-[#1152d4] text-white rounded-xl font-medium hover:bg-[#0d3da3] transition-colors"
+            >
+              Cerrar sesión e intentar con otra cuenta
+            </button>
+            <Link to={createPageUrl('Home')} className="block px-6 py-3 border border-gray-200 text-gray-600 rounded-xl font-medium hover:bg-gray-50 transition-colors text-center">
+              Volver al sitio
+            </Link>
+          </div>
         </div>
       </div>
     );
