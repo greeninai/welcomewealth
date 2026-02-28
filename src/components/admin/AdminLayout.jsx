@@ -32,13 +32,13 @@ export default function AdminLayout({ children, currentPage }) {
   const { data: applications = [] } = useQuery({
     queryKey: ['admin-apps'],
     queryFn: () => base44.entities.PartnerApplication.list(),
-    enabled: isAdmin,
+    enabled: !!isAdmin,
   });
 
   const { data: leads = [] } = useQuery({
     queryKey: ['admin-leads'],
     queryFn: () => base44.entities.ContactLead.list(),
-    enabled: isAdmin,
+    enabled: !!isAdmin,
   });
 
   const pendingApps = applications.filter(a => a.status === 'pending').length;
