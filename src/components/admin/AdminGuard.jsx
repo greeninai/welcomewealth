@@ -33,7 +33,7 @@ export default function AdminGuard({ children }) {
   }
 
   if (!user) {
-    base44.auth.redirectToLogin(window.location.href);
+    base44.auth.redirectToLogin(createPageUrl('AdminLogin'));
     return null;
   }
 

@@ -96,7 +96,7 @@ export default function AdminLogin() {
             </div>
 
             <button
-              onClick={() => base44.auth.redirectToLogin(window.location.origin + createPageUrl('AdminDashboard'))}
+              onClick={() => base44.auth.redirectToLogin(createPageUrl('AdminDashboard'))}
               className="w-full py-3.5 bg-[#1152d4] text-white rounded-xl font-semibold hover:bg-[#0d3da3] transition-colors shadow-md shadow-blue-200 mb-4"
             >
               Iniciar sesión con cuenta autorizada
