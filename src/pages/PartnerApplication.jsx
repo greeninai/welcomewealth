@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { base44 } from '@/api/base44Client';
 import { Building2, CheckCircle, Shield, Heart, Award, FileText, DollarSign, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 export default function PartnerApplication() {
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     orgName: '',
     contactName: '',
@@ -16,6 +19,23 @@ export default function PartnerApplication() {
     licensing: '',
     contributionModel: '',
     whyPartner: ''
+  });
+
+  const submitMutation = useMutation({
+    mutationFn: (data) => base44.entities.PartnerApplication.create({
+      org_name: data.orgName,
+      contact_name: data.contactName,
+      email: data.email,
+      phone: data.phone,
+      website: data.website,
+      category: data.category,
+      description: data.description,
+      licensing: data.licensing,
+      contribution_model: data.contributionModel,
+      why_partner: data.whyPartner,
+      status: 'pending',
+    }),
+    onSuccess: () => setSubmitted(true),
   });
 
   const eligibilityCriteria = [
@@ -83,21 +103,24 @@ export default function PartnerApplication() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Partner application submitted:', formData);
-    alert('Thank you for your application! We will review it and contact you within 2-3 weeks.');
-    setFormData({
-      orgName: '',
-      contactName: '',
-      email: '',
-      phone: '',
-      website: '',
-      category: '',
-      description: '',
-      licensing: '',
-      contributionModel: '',
-      whyPartner: ''
-    });
+    submitMutation.mutate(formData);
   };
+
+  if (submitted) {
+    return (
+      <div className="bg-[#f8f6f8] min-h-screen flex items-center justify-center p-6">
+        <div className="bg-white rounded-2xl shadow-lg p-10 max-w-lg text-center">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <CheckCircle className="w-8 h-8 text-[#188a42]" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">Application Submitted!</h2>
+          <p className="text-gray-600 leading-relaxed">
+            Thank you for your application. Our team will review it and contact you within 2–3 weeks.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#f8f6f8]">
@@ -142,9 +165,7 @@ export default function PartnerApplication() {
       <section className="py-16 bg-[#f8f6f8]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Ethical Standards</h2>
-          <p className="text-lg text-gray-600 text-center mb-8">
-            All partners commit to upholding these principles:
-          </p>
+          <p className="text-lg text-gray-600 text-center mb-8">All partners commit to upholding these principles:</p>
           <div className="bg-white rounded-2xl p-8 shadow-lg">
             <ul className="space-y-4">
               {ethicalStandards.map((standard, index) => (
@@ -161,13 +182,10 @@ export default function PartnerApplication() {
       {/* Contribution Models */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
-            Ethical Contribution Models
-          </h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Ethical Contribution Models</h2>
           <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
             WelcomeWealth operates under an ethical contribution model. Partner contributions do not influence ranking, placement, or visibility.
           </p>
-
           <div className="space-y-8">
             {contributionModels.map((model, index) => {
               const Icon = model.icon;
@@ -194,14 +212,6 @@ export default function PartnerApplication() {
               );
             })}
           </div>
-
-          <div className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-[#1152d4] border-opacity-20">
-            <h4 className="text-xl font-bold text-gray-900 mb-4 text-center">Transparency Commitment</h4>
-            <p className="text-gray-700 text-center leading-relaxed">
-              Partner contributions support WelcomeWealth's mission and GreenIn Impact programs.
-              <strong className="block mt-2">Contributions do not affect partner visibility, ranking, or recommendations.</strong>
-            </p>
-          </div>
         </div>
       </section>
 
@@ -227,132 +237,66 @@ export default function PartnerApplication() {
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Partner Application Form</h2>
-          
           <div className="bg-blue-50 rounded-xl p-6 mb-8">
             <p className="text-gray-700">
               <strong>Please note:</strong> This application is for organizations only. All information provided will be reviewed carefully. Incomplete applications may delay the review process.
             </p>
           </div>
-
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-lg space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Organization Name *</label>
-              <Input
-                value={formData.orgName}
-                onChange={(e) => setFormData({...formData, orgName: e.target.value})}
-                required
-                placeholder="Your organization's legal name"
-              />
+              <Input value={formData.orgName} onChange={(e) => setFormData({...formData, orgName: e.target.value})} required placeholder="Your organization's legal name" />
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Contact Person *</label>
-                <Input
-                  value={formData.contactName}
-                  onChange={(e) => setFormData({...formData, contactName: e.target.value})}
-                  required
-                  placeholder="Full name"
-                />
+                <Input value={formData.contactName} onChange={(e) => setFormData({...formData, contactName: e.target.value})} required placeholder="Full name" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
-                <Input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  required
-                  placeholder="contact@organization.com"
-                />
+                <Input type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} required placeholder="contact@organization.com" />
               </div>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
-                <Input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  required
-                  placeholder="+1 (555) 123-4567"
-                />
+                <Input type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required placeholder="+1 (555) 123-4567" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Website *</label>
-                <Input
-                  type="url"
-                  value={formData.website}
-                  onChange={(e) => setFormData({...formData, website: e.target.value})}
-                  required
-                  placeholder="https://yourorganization.com"
-                />
+                <Input type="url" value={formData.website} onChange={(e) => setFormData({...formData, website: e.target.value})} required placeholder="https://yourorganization.com" />
               </div>
             </div>
-
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Partner Category *</label>
-              <select
-                value={formData.category}
-                onChange={(e) => setFormData({...formData, category: e.target.value})}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1152d4]"
-              >
+              <select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})} required className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1152d4]">
                 <option value="">Select a category</option>
                 <option value="education">Financial Education Organization</option>
                 <option value="professional">Licensed Financial Professional</option>
                 <option value="community">Community & Immigrant Support</option>
               </select>
             </div>
-
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Organization Description *</label>
-              <Textarea
-                value={formData.description}
-                onChange={(e) => setFormData({...formData, description: e.target.value})}
-                required
-                placeholder="Briefly describe your organization, services, and target audience..."
-                className="h-32"
-              />
+              <Textarea value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})} required placeholder="Briefly describe your organization, services, and target audience..." className="h-32" />
             </div>
-
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Licensing & Credentials *</label>
-              <Textarea
-                value={formData.licensing}
-                onChange={(e) => setFormData({...formData, licensing: e.target.value})}
-                required
-                placeholder="List relevant licenses, certifications, registrations, or professional memberships..."
-                className="h-24"
-              />
+              <Textarea value={formData.licensing} onChange={(e) => setFormData({...formData, licensing: e.target.value})} required placeholder="List relevant licenses, certifications, registrations, or professional memberships..." className="h-24" />
             </div>
-
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Contribution Model *</label>
-              <select
-                value={formData.contributionModel}
-                onChange={(e) => setFormData({...formData, contributionModel: e.target.value})}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1152d4]"
-              >
+              <select value={formData.contributionModel} onChange={(e) => setFormData({...formData, contributionModel: e.target.value})} required className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1152d4]">
                 <option value="">Select a contribution model</option>
                 <option value="option-a">Option A: Ethical Participation Fee</option>
                 <option value="option-b">Option B: GreenIn Impact Contribution</option>
                 <option value="option-c">Option C: Blended Contribution (Recommended)</option>
               </select>
             </div>
-
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Why do you want to become a partner? *</label>
-              <Textarea
-                value={formData.whyPartner}
-                onChange={(e) => setFormData({...formData, whyPartner: e.target.value})}
-                required
-                placeholder="Explain your motivation and how partnership aligns with your organization's mission..."
-                className="h-32"
-              />
+              <Textarea value={formData.whyPartner} onChange={(e) => setFormData({...formData, whyPartner: e.target.value})} required placeholder="Explain your motivation and how partnership aligns with your organization's mission..." className="h-32" />
             </div>
-
             <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-200">
               <h4 className="font-bold text-gray-900 mb-2">Partner Agreement Summary</h4>
               <ul className="space-y-2 text-sm text-gray-700">
@@ -363,9 +307,8 @@ export default function PartnerApplication() {
                 <li>• Periodic review and ongoing ethical conduct required</li>
               </ul>
             </div>
-
-            <Button type="submit" className="w-full bg-[#188a42] hover:bg-[#146835] py-6 text-lg">
-              Submit Application
+            <Button type="submit" disabled={submitMutation.isPending} className="w-full bg-[#188a42] hover:bg-[#146835] py-6 text-lg">
+              {submitMutation.isPending ? 'Submitting...' : 'Submit Application'}
             </Button>
           </form>
         </div>

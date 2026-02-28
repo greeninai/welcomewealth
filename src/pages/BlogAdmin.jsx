@@ -64,18 +64,6 @@ export default function BlogAdmin() {
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['blog-posts-admin'] }); queryClient.invalidateQueries({ queryKey: ['blog-posts'] }); },
   });
 
-  if (user && user.role !== 'admin') {
-    return (
-      <div className="min-h-screen bg-[#f8f6f8] flex items-center justify-center p-6">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Access Restricted</h1>
-          <p className="text-gray-600 mb-6">This page is only available to administrators.</p>
-          <Link to={createPageUrl('Blog')} className="text-[#1152d4] hover:underline">← Back to Blog</Link>
-        </div>
-      </div>
-    );
-  }
-
   const openNew = () => { setForm(EMPTY_FORM); setEditingPost('new'); };
   const openEdit = (post) => { setForm({ ...post }); setEditingPost(post); };
 
