@@ -206,7 +206,9 @@ export default function BlogAdmin() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <div className="flex items-center gap-3 mb-1">
-              <Link to={createPageUrl('Blog')} className="text-sm text-gray-500 hover:text-[#1152d4]">← Blog</Link>
+              <Link to={createPageUrl('AdminDashboard')} className="text-sm text-gray-500 hover:text-[#1152d4]">← Dashboard</Link>
+              <span className="text-gray-300">·</span>
+              <Link to={createPageUrl('Blog')} className="text-sm text-gray-500 hover:text-[#1152d4]">Blog</Link>
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Blog Admin</h1>
             <p className="text-gray-600 mt-1">{posts.length} article{posts.length !== 1 ? 's' : ''} total</p>
@@ -280,6 +282,7 @@ export default function BlogAdmin() {
           </div>
         )}
       </section>
-    </div>
+      </div>
+    </AdminGuard>
   );
 }
