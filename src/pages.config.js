@@ -49,44 +49,44 @@
  */
 import About from './pages/About';
 import Accessibility from './pages/Accessibility';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminLogin from './pages/AdminLogin';
 import App from './pages/App';
+import ApplicationsAdmin from './pages/ApplicationsAdmin';
 import Blog from './pages/Blog';
+import BlogAdmin from './pages/BlogAdmin';
 import BlogPost from './pages/BlogPost';
 import Disclaimer from './pages/Disclaimer';
 import Home from './pages/Home';
+import LeadsAdmin from './pages/LeadsAdmin';
 import PartnerApplication from './pages/PartnerApplication';
 import Partners from './pages/Partners';
+import PartnersAdmin from './pages/PartnersAdmin';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Transparency from './pages/Transparency';
-import BlogAdmin from './pages/BlogAdmin';
-import AdminDashboard from './pages/AdminDashboard';
-import PartnersAdmin from './pages/PartnersAdmin';
-import ApplicationsAdmin from './pages/ApplicationsAdmin';
-import LeadsAdmin from './pages/LeadsAdmin';
-import AdminLogin from './pages/AdminLogin';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "About": About,
     "Accessibility": Accessibility,
+    "AdminDashboard": AdminDashboard,
+    "AdminLogin": AdminLogin,
     "App": App,
+    "ApplicationsAdmin": ApplicationsAdmin,
     "Blog": Blog,
+    "BlogAdmin": BlogAdmin,
     "BlogPost": BlogPost,
     "Disclaimer": Disclaimer,
     "Home": Home,
+    "LeadsAdmin": LeadsAdmin,
     "PartnerApplication": PartnerApplication,
     "Partners": Partners,
+    "PartnersAdmin": PartnersAdmin,
     "Privacy": Privacy,
     "Terms": Terms,
     "Transparency": Transparency,
-    "BlogAdmin": BlogAdmin,
-    "AdminDashboard": AdminDashboard,
-    "PartnersAdmin": PartnersAdmin,
-    "ApplicationsAdmin": ApplicationsAdmin,
-    "LeadsAdmin": LeadsAdmin,
-    "AdminLogin": AdminLogin,
 }
 
 export const pagesConfig = {
