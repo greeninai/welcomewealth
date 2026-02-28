@@ -33,8 +33,6 @@ export default function AdminGuard({ children }) {
   }
 
   if (!user) {
-    // Redirect to AdminLogin page which handles the login flow
-    window.location.href = createPageUrl('AdminLogin');
     return null;
   }
 

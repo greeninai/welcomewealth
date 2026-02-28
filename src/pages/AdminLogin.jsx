@@ -15,10 +15,10 @@ export default function AdminLogin() {
   });
 
   useEffect(() => {
-    if (user && isAuthorizedAdmin(user.email)) {
+    if (!isLoading && user && isAuthorizedAdmin(user.email)) {
       navigate(createPageUrl('AdminDashboard'), { replace: true });
     }
-  }, [user]);  // eslint-disable-line
+  }, [isLoading, user]);
 
   if (isLoading) {
     return (

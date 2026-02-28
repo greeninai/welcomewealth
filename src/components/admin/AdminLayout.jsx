@@ -144,7 +144,7 @@ export default function AdminLayout({ children, currentPage }) {
           </div>
         </div>
         <button
-          onClick={() => base44.auth.logout(window.location.origin + createPageUrl('AdminLogin'))}
+          onClick={() => base44.auth.logout()}
           className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-white/60 hover:bg-white/10 hover:text-white text-sm font-medium transition-all"
         >
           <LogOut className="w-4 h-4" />
