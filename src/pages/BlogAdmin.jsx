@@ -193,13 +193,14 @@ export default function BlogAdmin() {
           </div>
         </form>
       </div>
+      </AdminGuard>
     );
   }
 
   // ── LIST VIEW ──
   return (
     <AdminGuard>
-    <div className="bg-[#f8f6f8] min-h-screen">
+      <div className="bg-[#f8f6f8] min-h-screen">
       {/* Header */}
       <section className="bg-gradient-to-br from-white to-blue-50 py-12 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
