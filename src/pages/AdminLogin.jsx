@@ -18,7 +18,7 @@ export default function AdminLogin() {
     if (user && isAuthorizedAdmin(user.email)) {
       navigate(createPageUrl('AdminDashboard'), { replace: true });
     }
-  }, [user, navigate]);
+  }, [user]);  // eslint-disable-line
 
   if (isLoading) {
     return (
