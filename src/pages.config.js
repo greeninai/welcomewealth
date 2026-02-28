@@ -64,6 +64,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import PartnersAdmin from './pages/PartnersAdmin';
 import ApplicationsAdmin from './pages/ApplicationsAdmin';
 import LeadsAdmin from './pages/LeadsAdmin';
+import AdminLogin from './pages/AdminLogin';
 import __Layout from './Layout.jsx';
 
 
@@ -85,6 +86,7 @@ export const PAGES = {
     "PartnersAdmin": PartnersAdmin,
     "ApplicationsAdmin": ApplicationsAdmin,
     "LeadsAdmin": LeadsAdmin,
+    "AdminLogin": AdminLogin,
 }
 
 export const pagesConfig = {
