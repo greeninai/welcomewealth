@@ -27,16 +27,18 @@ export default function AdminLayout({ children, currentPage }) {
     queryFn: async () => { try { return await base44.auth.me(); } catch { return null; } },
   });
 
+  const isAdmin = user && isAuthorizedAdmin(user.email);
+
   const { data: applications = [] } = useQuery({
     queryKey: ['admin-apps'],
     queryFn: () => base44.entities.PartnerApplication.list(),
-    enabled: !!user && isAuthorizedAdmin(user?.email),
+    enabled: isAdmin,
   });
 
   const { data: leads = [] } = useQuery({
     queryKey: ['admin-leads'],
     queryFn: () => base44.entities.ContactLead.list(),
-    enabled: !!user && isAuthorizedAdmin(user?.email),
+    enabled: isAdmin,
   });
 
   const pendingApps = applications.filter(a => a.status === 'pending').length;
@@ -48,6 +50,12 @@ export default function AdminLayout({ children, currentPage }) {
     return null;
   };
 
+  useEffect(() => {
+    if (!isLoading && !user) {
+      navigate(createPageUrl('AdminLogin'), { replace: true });
+    }
+  }, [isLoading, user]);
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#f8f6f8] flex items-center justify-center">
@@ -56,12 +64,9 @@ export default function AdminLayout({ children, currentPage }) {
     );
   }
 
-  if (!user) {
-    navigate(createPageUrl('AdminLogin'), { replace: true });
-    return null;
-  }
+  if (!user) return null;
 
-  if (!isAuthorizedAdmin(user.email)) {
+  if (!isAdmin) {
     return (
       <div className="min-h-screen bg-[#f8f6f8] flex items-center justify-center p-6">
         <div className="bg-white rounded-2xl shadow-lg p-10 max-w-md w-full text-center">
@@ -70,9 +75,9 @@ export default function AdminLayout({ children, currentPage }) {
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Acceso Restringido</h1>
           <p className="text-gray-500 mb-2">Área exclusiva para administradores de WelcomeWealth.</p>
-          <p className="text-xs text-gray-400 mb-6">Conectado como: <span className="font-medium text-gray-600">{user.email}</span></p>
+          <p className="text-xs text-gray-400 mb-6">Estás conectado con una cuenta no autorizada.</p>
           <div className="space-y-3">
-            <button onClick={() => base44.auth.logout(createPageUrl('AdminLogin'))} className="w-full px-6 py-3 bg-[#1152d4] text-white rounded-lg font-medium hover:bg-[#0d3da3]">
+            <button onClick={() => base44.auth.logout()} className="w-full px-6 py-3 bg-[#1152d4] text-white rounded-lg font-medium hover:bg-[#0d3da3]">
               Cerrar sesión
             </button>
             <Link to={createPageUrl('Home')} className="block px-6 py-3 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50">
