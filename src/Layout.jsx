@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Home, Info, Smartphone, Users, DollarSign, FileText, ChevronDown } from 'lucide-react';
+import { Home, Info, Smartphone, Users, DollarSign, FileText, ChevronDown, LayoutDashboard } from 'lucide-react';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { LanguageProvider } from './components/LanguageContext';
+import { useQuery } from '@tanstack/react-query';
+import { base44 } from '@/api/base44Client';
+import { isAuthorizedAdmin } from './components/admin/AdminGuard';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
