@@ -40,7 +40,7 @@ export default function LeadsAdmin() {
   const filtered = filter === 'all' ? leads : leads.filter(l => l.status === filter);
 
   return (
-    <AdminGuard>
+    <AdminLayout currentPage="LeadsAdmin">
       <div className="bg-[#f8f6f8] min-h-screen">
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -102,6 +102,6 @@ export default function LeadsAdmin() {
           }
         </div>
       </div>
-    </AdminGuard>
+    </AdminLayout>
   );
 }

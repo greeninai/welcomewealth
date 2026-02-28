@@ -48,7 +48,7 @@ export default function PartnersAdmin() {
   const openNew = () => { setForm({ ...EMPTY, languages: '', services: '' }); setEditing('new'); };
 
   return (
-    <AdminGuard>
+    <AdminLayout currentPage="PartnersAdmin">
       <div className="bg-[#f8f6f8] min-h-screen">
         {editing !== null ? (
           <>
@@ -149,6 +149,6 @@ export default function PartnersAdmin() {
           </>
         )}
       </div>
-    </AdminGuard>
+    </AdminLayout>
   );
 }

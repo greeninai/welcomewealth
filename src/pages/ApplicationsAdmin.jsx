@@ -38,7 +38,7 @@ export default function ApplicationsAdmin() {
   const saveNotes = (id) => { updateM.mutate({ id, data: { admin_notes: notes[id] } }); };
 
   return (
-    <AdminGuard>
+    <AdminLayout currentPage="ApplicationsAdmin">
       <div className="bg-[#f8f6f8] min-h-screen">
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -113,6 +113,6 @@ export default function ApplicationsAdmin() {
           }
         </div>
       </div>
-    </AdminGuard>
+    </AdminLayout>
   );
 }
