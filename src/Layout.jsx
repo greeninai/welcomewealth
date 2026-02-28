@@ -12,6 +12,12 @@ export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [partnersDropdownOpen, setPartnersDropdownOpen] = React.useState(false);
 
+  const { data: user } = useQuery({
+    queryKey: ['me'],
+    queryFn: async () => { try { return await base44.auth.me(); } catch { return null; } },
+  });
+  const isAdmin = user && isAuthorizedAdmin(user.email);
+
   const navigation = [
     { name: 'Home', path: 'Home', icon: Home },
     { name: 'About', path: 'About', icon: Info },
