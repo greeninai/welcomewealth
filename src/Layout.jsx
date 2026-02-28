@@ -96,9 +96,19 @@ export default function Layout({ children, currentPageName }) {
                 );
               })}
               <LanguageSwitcher />
+              {isAdmin && (
+                <Link
+                  to={createPageUrl('AdminDashboard')}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+                  title="Admin Dashboard"
+                >
+                  <LayoutDashboard className="w-4 h-4" />
+                  Admin
+                </Link>
+              )}
               <a
                 href="#download"
-                className="ml-4 px-6 py-2 bg-[#1152d4] text-white rounded-lg text-sm font-medium hover:bg-[#0d3da3] transition-colors"
+                className="ml-2 px-6 py-2 bg-[#1152d4] text-white rounded-lg text-sm font-medium hover:bg-[#0d3da3] transition-colors"
               >
                 Download App
               </a>
