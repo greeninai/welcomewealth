@@ -188,12 +188,25 @@ export default function Partners() {
 
   const activeFiltersCount = [selectedCategory, selectedService, selectedLocation, selectedLanguage].filter(f => f !== 'all').length;
 
+  const leadMutation = useMutation({
+    mutationFn: (data) => base44.entities.ContactLead.create({
+      name: data.name,
+      email: data.email,
+      partner_category: data.partnerCategory,
+      message: data.message,
+      source: 'partners_page',
+      status: 'new',
+    }),
+    onSuccess: () => {
+      setFormData({ name: '', email: '', message: '', partnerCategory: '' });
+      setShowContactForm(false);
+      alert('Thank you! Your request has been received. A partner will contact you directly if they can assist.');
+    },
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Contact request submitted:', formData);
-    alert('Thank you! Your request has been received. A partner will contact you directly if they can assist.');
-    setFormData({ name: '', email: '', message: '', partnerCategory: '' });
-    setShowContactForm(false);
+    leadMutation.mutate(formData);
   };
 
   return (
