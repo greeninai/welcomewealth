@@ -17,6 +17,11 @@ const categories = [
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  const { data: user } = useQuery({
+    queryKey: ['me'],
+    queryFn: async () => { try { return await base44.auth.me(); } catch { return null; } },
+  });
+
   const { data: posts = [], isLoading } = useQuery({
     queryKey: ['blog-posts'],
     queryFn: () => base44.entities.BlogPost.filter({ status: 'published' }, '-created_date'),
