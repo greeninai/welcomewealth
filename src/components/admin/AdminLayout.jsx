@@ -6,7 +6,7 @@ import { base44 } from '@/api/base44Client';
 import { isAuthorizedAdmin } from './AdminGuard';
 import {
   LayoutDashboard, FileText, Users, ClipboardList, Inbox,
-  LogOut, Menu, X, ChevronRight, Loader2, Shield
+  LogOut, Menu, X, ChevronRight, Loader2, Shield, ScrollText
 } from 'lucide-react';
 
 const NAV_ITEMS = [
