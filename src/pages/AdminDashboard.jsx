@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import AdminGuard from '../components/admin/AdminGuard';
-import { FileText, Users, Inbox, BarChart2, ChevronRight, Clock, CheckCircle, AlertCircle, Star } from 'lucide-react';
+import AdminLayout from '../components/admin/AdminLayout';
+import { FileText, Users, Inbox, ChevronRight, Clock, Star } from 'lucide-react';
 
 function StatCard({ label, value, sub, color, icon: Icon }) {
   return (

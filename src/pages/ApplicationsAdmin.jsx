@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
-import AdminGuard from '../components/admin/AdminGuard';
+import AdminLayout from '../components/admin/AdminLayout';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { ArrowLeft, Loader2, ChevronDown, ChevronUp, CheckCircle, XCircle, Clock, Eye } from 'lucide-react';
