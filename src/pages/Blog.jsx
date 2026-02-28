@@ -52,6 +52,17 @@ export default function Blog() {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Articles on financial education, community resilience, responsible innovation, and the GreenIn Impact programs.
           </p>
+          {user?.role === 'admin' && (
+            <div className="mt-6">
+              <Link
+                to={createPageUrl('BlogAdmin')}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
+              >
+                <Settings className="w-4 h-4" />
+                Manage Articles
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
