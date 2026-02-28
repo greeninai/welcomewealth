@@ -1,9 +1,10 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
+import { Home, BookOpen, Users, FileText, AlertCircle } from 'lucide-react';
+import { createPageUrl } from '@/utils';
 
-
-export default function PageNotFound({}) {
+export default function PageNotFound() {
     const location = useLocation();
     const pageName = location.pathname.substring(1);
 
@@ -18,58 +19,87 @@ export default function PageNotFound({}) {
             }
         }
     });
-    
+
+    const quickLinks = [
+        { label: 'Home', path: 'Home', icon: Home },
+        { label: 'The App', path: 'App', icon: BookOpen },
+        { label: 'Trusted Partners', path: 'Partners', icon: Users },
+        { label: 'Blog', path: 'Blog', icon: FileText },
+    ];
+
     return (
-        <div className="min-h-screen flex items-center justify-center p-6 bg-slate-50">
-            <div className="max-w-md w-full">
-                <div className="text-center space-y-6">
-                    {/* 404 Error Code */}
-                    <div className="space-y-2">
-                        <h1 className="text-7xl font-light text-slate-300">404</h1>
-                        <div className="h-0.5 w-16 bg-slate-200 mx-auto"></div>
-                    </div>
-                    
-                    {/* Main Message */}
-                    <div className="space-y-3">
-                        <h2 className="text-2xl font-medium text-slate-800">
-                            Page Not Found
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            The page <span className="font-medium text-slate-700">"{pageName}"</span> could not be found in this application.
-                        </p>
-                    </div>
-                    
-                    {/* Admin Note */}
-                    {isFetched && authData.isAuthenticated && authData.user?.role === 'admin' && (
-                        <div className="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200">
-                            <div className="flex items-start space-x-3">
-                                <div className="flex-shrink-0 w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center mt-0.5">
-                                    <div className="w-2 h-2 rounded-full bg-orange-400"></div>
-                                </div>
-                                <div className="text-left space-y-1">
-                                    <p className="text-sm font-medium text-slate-700">Admin Note</p>
-                                    <p className="text-sm text-slate-600 leading-relaxed">
-                                        This could mean that the AI hasn't implemented this page yet. Ask it to implement it in the chat.
-                                    </p>
-                                </div>
+        <div className="min-h-screen bg-[#f8f6f8] flex flex-col items-center justify-center p-6">
+            <div className="max-w-lg w-full text-center">
+                {/* Logo */}
+                <img
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/9391760f3_WelcomeWealth_Symbol.png"
+                    alt="WelcomeWealth"
+                    className="w-16 h-16 mx-auto mb-8 opacity-60"
+                />
+
+                {/* 404 */}
+                <div className="mb-6">
+                    <span className="text-8xl font-bold text-[#1152d4] opacity-20 select-none">404</span>
+                </div>
+
+                {/* Message */}
+                <h1 className="text-3xl font-bold text-gray-900 mb-3">Page Not Found</h1>
+                <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                    Sorry, we couldn't find the page you were looking for. It may have been moved or doesn't exist.
+                </p>
+
+                {/* Admin Note */}
+                {isFetched && authData?.isAuthenticated && authData?.user?.role === 'admin' && (
+                    <div className="mb-8 p-4 bg-amber-50 rounded-xl border border-amber-200 text-left">
+                        <div className="flex items-start gap-3">
+                            <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                            <div>
+                                <p className="text-sm font-semibold text-amber-800">Admin Note</p>
+                                <p className="text-sm text-amber-700 mt-1">
+                                    The page <strong>"{pageName}"</strong> hasn't been implemented yet. Ask the AI to create it in the chat.
+                                </p>
                             </div>
                         </div>
-                    )}
-                    
-                    {/* Action Button */}
-                    <div className="pt-6">
-                        <button 
-                            onClick={() => window.location.href = '/'} 
-                            className="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500"
-                        >
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                            Go Home
-                        </button>
+                    </div>
+                )}
+
+                {/* Primary CTA */}
+                <Link
+                    to={createPageUrl('Home')}
+                    className="inline-flex items-center gap-2 px-8 py-3 bg-[#1152d4] text-white rounded-xl font-medium hover:bg-[#0d3da3] transition-colors mb-10"
+                >
+                    <Home className="w-4 h-4" />
+                    Back to Home
+                </Link>
+
+                {/* Quick Links */}
+                <div>
+                    <p className="text-sm text-gray-500 mb-4">Or explore these pages:</p>
+                    <div className="grid grid-cols-2 gap-3">
+                        {quickLinks.map((link) => {
+                            const Icon = link.icon;
+                            return (
+                                <Link
+                                    key={link.path}
+                                    to={createPageUrl(link.path)}
+                                    className="flex items-center gap-2 p-3 bg-white rounded-xl border border-gray-200 text-gray-700 hover:border-[#1152d4] hover:text-[#1152d4] transition-colors text-sm font-medium"
+                                >
+                                    <Icon className="w-4 h-4 flex-shrink-0" />
+                                    {link.label}
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
+
+                {/* Footer note */}
+                <p className="mt-10 text-xs text-gray-400">
+                    © 2026 WelcomeWealth · A social impact initiative by{' '}
+                    <a href="https://www.greenin.org" target="_blank" rel="noopener noreferrer" className="text-[#188a42] hover:underline">
+                        GreenIn Impact
+                    </a>
+                </p>
             </div>
         </div>
-    )
+    );
 }
