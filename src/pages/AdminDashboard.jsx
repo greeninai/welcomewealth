@@ -53,20 +53,13 @@ export default function AdminDashboard() {
   const activePartners = partners.filter(p => p.status === 'active').length;
 
   return (
-    <AdminGuard>
-      <div className="bg-[#f8f6f8] min-h-screen">
+    <AdminLayout currentPage="AdminDashboard">
+      <div className="bg-[#f8f6f8] min-h-[100vh]">
         {/* Header */}
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="flex items-center gap-4 mb-2">
-              <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/f35f84552_WelcomeWealth_Logo.png"
-                alt="WelcomeWealth" className="h-8"
-              />
-              <span className="text-xs font-semibold text-white bg-[#1152d4] px-2 py-0.5 rounded-full">ADMIN</span>
-            </div>
-            <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-            <p className="text-gray-500 mt-1">Welcome to the WelcomeWealth control center</p>
+            <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+            <p className="text-gray-500 mt-1">Panel de control WelcomeWealth</p>
           </div>
         </div>
 
@@ -149,7 +142,7 @@ export default function AdminDashboard() {
           )}
         </div>
       </div>
-    </AdminGuard>
+    </AdminLayout>
   );
 }
 
