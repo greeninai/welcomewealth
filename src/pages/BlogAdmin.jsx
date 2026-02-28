@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
+import AdminGuard from '../components/admin/AdminGuard';
 
 const EMPTY_FORM = {
   title: '',
