@@ -15,6 +15,7 @@ const NAV_ITEMS = [
   { label: 'Partner Directory', page: 'PartnersAdmin', icon: Users },
   { label: 'Solicitudes', page: 'ApplicationsAdmin', icon: ClipboardList },
   { label: 'Leads', page: 'LeadsAdmin', icon: Inbox },
+  { label: 'Audit Log', page: 'AuditLog', icon: Shield },
 ];
 
 export default function AdminLayout({ children, currentPage }) {
