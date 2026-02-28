@@ -60,6 +60,10 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Transparency from './pages/Transparency';
 import BlogAdmin from './pages/BlogAdmin';
+import AdminDashboard from './pages/AdminDashboard';
+import PartnersAdmin from './pages/PartnersAdmin';
+import ApplicationsAdmin from './pages/ApplicationsAdmin';
+import LeadsAdmin from './pages/LeadsAdmin';
 import __Layout from './Layout.jsx';
 
 
@@ -77,6 +81,10 @@ export const PAGES = {
     "Terms": Terms,
     "Transparency": Transparency,
     "BlogAdmin": BlogAdmin,
+    "AdminDashboard": AdminDashboard,
+    "PartnersAdmin": PartnersAdmin,
+    "ApplicationsAdmin": ApplicationsAdmin,
+    "LeadsAdmin": LeadsAdmin,
 }
 
 export const pagesConfig = {
