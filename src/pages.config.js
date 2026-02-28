@@ -65,6 +65,7 @@ import PartnersAdmin from './pages/PartnersAdmin';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Transparency from './pages/Transparency';
+import AuditLog from './pages/AuditLog';
 import __Layout from './Layout.jsx';
 
 
@@ -87,6 +88,7 @@ export const PAGES = {
     "Privacy": Privacy,
     "Terms": Terms,
     "Transparency": Transparency,
+    "AuditLog": AuditLog,
 }
 
 export const pagesConfig = {
