@@ -53,6 +53,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
 import App from './pages/App';
 import ApplicationsAdmin from './pages/ApplicationsAdmin';
+import AuditLog from './pages/AuditLog';
 import Blog from './pages/Blog';
 import BlogAdmin from './pages/BlogAdmin';
 import BlogPost from './pages/BlogPost';
@@ -65,7 +66,6 @@ import PartnersAdmin from './pages/PartnersAdmin';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Transparency from './pages/Transparency';
-import AuditLog from './pages/AuditLog';
 import __Layout from './Layout.jsx';
 
 
@@ -76,6 +76,7 @@ export const PAGES = {
     "AdminLogin": AdminLogin,
     "App": App,
     "ApplicationsAdmin": ApplicationsAdmin,
+    "AuditLog": AuditLog,
     "Blog": Blog,
     "BlogAdmin": BlogAdmin,
     "BlogPost": BlogPost,
@@ -88,7 +89,6 @@ export const PAGES = {
     "Privacy": Privacy,
     "Terms": Terms,
     "Transparency": Transparency,
-    "AuditLog": AuditLog,
 }
 
 export const pagesConfig = {
