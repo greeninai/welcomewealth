@@ -251,32 +251,32 @@ function LayoutInner({ children, currentPageName }) {
 
             {/* About */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-4">About</h3>
+              <h3 className="text-sm font-semibold text-gray-900 mb-4">{ft.about}</h3>
               <ul className="space-y-2">
-                <li><Link to={createPageUrl('About')} className="text-sm text-gray-600 hover:text-[#1152d4]">Our Mission</Link></li>
-                <li><Link to={createPageUrl('App')} className="text-sm text-gray-600 hover:text-[#1152d4]">The App</Link></li>
-                <li><Link to={createPageUrl('Transparency')} className="text-sm text-gray-600 hover:text-[#1152d4]">Transparency</Link></li>
-                <li><Link to={createPageUrl('Blog')} className="text-sm text-gray-600 hover:text-[#1152d4]">Blog</Link></li>
+                <li><Link to={createPageUrl('About')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.ourMission}</Link></li>
+                <li><Link to={createPageUrl('App')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.theApp}</Link></li>
+                <li><Link to={createPageUrl('Transparency')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.transparency}</Link></li>
+                <li><Link to={createPageUrl('Blog')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.blog}</Link></li>
               </ul>
             </div>
 
             {/* Support */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-4">Get Help</h3>
+              <h3 className="text-sm font-semibold text-gray-900 mb-4">{ft.getHelp}</h3>
               <ul className="space-y-2">
-                <li><Link to={createPageUrl('Partners')} className="text-sm text-gray-600 hover:text-[#1152d4]">Trusted Partners</Link></li>
-                <li><Link to={createPageUrl('PartnerApplication')} className="text-sm text-gray-600 hover:text-[#1152d4]">Become a Partner</Link></li>
+                <li><Link to={createPageUrl('Partners')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.trustedPartners}</Link></li>
+                <li><Link to={createPageUrl('PartnerApplication')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.becomePartner}</Link></li>
               </ul>
             </div>
 
             {/* Legal */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-4">Legal</h3>
+              <h3 className="text-sm font-semibold text-gray-900 mb-4">{ft.legal}</h3>
               <ul className="space-y-2">
-                <li><Link to={createPageUrl('Privacy')} className="text-sm text-gray-600 hover:text-[#1152d4]">Privacy Policy</Link></li>
-                <li><Link to={createPageUrl('Terms')} className="text-sm text-gray-600 hover:text-[#1152d4]">Terms of Use</Link></li>
-                <li><Link to={createPageUrl('Accessibility')} className="text-sm text-gray-600 hover:text-[#1152d4]">Accessibility</Link></li>
-                <li><Link to={createPageUrl('Disclaimer')} className="text-sm text-gray-600 hover:text-[#1152d4]">Disclaimer</Link></li>
+                <li><Link to={createPageUrl('Privacy')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.privacy}</Link></li>
+                <li><Link to={createPageUrl('Terms')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.terms}</Link></li>
+                <li><Link to={createPageUrl('Accessibility')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.accessibility}</Link></li>
+                <li><Link to={createPageUrl('Disclaimer')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.disclaimer}</Link></li>
               </ul>
             </div>
           </div>
