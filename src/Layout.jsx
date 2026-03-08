@@ -180,13 +180,14 @@ export default function Layout({ children, currentPageName }) {
                   <Link
                     key={item.name}
                     to={createPageUrl(item.path)}
-                    className={`block px-4 py-3 rounded-lg text-base font-medium ${
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium ${
                       currentPageName === item.path
-                        ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4]'
+                        ? 'bg-[#1152d4] bg-opacity-10 text-[#1152d4] font-semibold'
                         : 'text-gray-700 hover:bg-gray-100'
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
+                    {currentPageName === item.path && <div className="w-1.5 h-1.5 rounded-full bg-[#1152d4]" />}
                     {item.name}
                   </Link>
                 );
