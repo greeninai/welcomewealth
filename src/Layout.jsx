@@ -169,7 +169,7 @@ function LayoutInner({ children, currentPageName }) {
                         }`}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Partner Directory
+                        {nt.partnerDirectory}
                       </Link>
                       <Link
                         to={createPageUrl('PartnerApplication')}
@@ -180,7 +180,7 @@ function LayoutInner({ children, currentPageName }) {
                         }`}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Apply as Partner
+                        {nt.applyAsPartner}
                       </Link>
                     </div>
                   );
