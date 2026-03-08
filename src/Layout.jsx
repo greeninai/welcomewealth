@@ -108,14 +108,16 @@ export default function Layout({ children, currentPageName }) {
                 );
               })}
               <LanguageSwitcher />
-              <Link
-                to={isAdmin ? createPageUrl('AdminDashboard') : createPageUrl('AdminLogin')}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-[#1152d4] bg-blue-50 hover:bg-blue-100 transition-colors border border-blue-100"
-                title="Admin Panel"
-              >
-                <LayoutDashboard className="w-4 h-4" />
-                Admin
-              </Link>
+              {isAdmin && (
+                <Link
+                  to={createPageUrl('AdminDashboard')}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-[#1152d4] hover:bg-blue-50 transition-colors"
+                  title="Admin Panel"
+                >
+                  <LayoutDashboard className="w-4 h-4" />
+                  Admin
+                </Link>
+              )}
               <a
                 href="#download"
                 className="ml-2 px-6 py-2 bg-[#1152d4] text-white rounded-lg text-sm font-medium hover:bg-[#0d3da3] transition-colors"
@@ -192,14 +194,16 @@ export default function Layout({ children, currentPageName }) {
               <div className="px-4 py-2">
                 <LanguageSwitcher />
               </div>
-              <Link
-                to={isAdmin ? createPageUrl('AdminDashboard') : createPageUrl('AdminLogin')}
-                className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-[#1152d4] hover:bg-blue-50"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <LayoutDashboard className="w-4 h-4" />
-                Admin Panel
-              </Link>
+              {isAdmin && (
+                <Link
+                  to={createPageUrl('AdminDashboard')}
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-gray-500 hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <LayoutDashboard className="w-4 h-4" />
+                  Admin Panel
+                </Link>
+              )}
               <a
                 href="#download"
                 className="block px-4 py-3 bg-[#1152d4] text-white rounded-lg text-base font-medium text-center hover:bg-[#0d3da3]"
