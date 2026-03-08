@@ -211,7 +211,7 @@ function LayoutInner({ children, currentPageName }) {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <LayoutDashboard className="w-4 h-4" />
-                  Admin Panel
+                  {nt.adminPanel}
                 </Link>
               )}
               <a
@@ -219,7 +219,7 @@ function LayoutInner({ children, currentPageName }) {
                 className="block px-4 py-3 bg-[#1152d4] text-white rounded-lg text-base font-medium text-center hover:bg-[#0d3da3]"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Download App
+                {nt.downloadApp}
               </a>
             </div>
           </div>
