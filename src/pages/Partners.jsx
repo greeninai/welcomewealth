@@ -138,53 +138,70 @@ export default function Partners() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Partner Directory</h2>
 
           {/* Search & Filters */}
-          <div className="mb-10 space-y-5">
-            <div className="relative max-w-2xl mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <Input type="text" placeholder="Search partners by name or services..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="pl-12 pr-10 py-6 text-lg" />
-              {searchQuery && <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"><X className="w-5 h-5" /></button>}
+          <div className="mb-10 space-y-4">
+            <div className="flex gap-3">
+              <div className="relative flex-1 max-w-2xl">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Input type="text" placeholder="Search partners by name or services..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="pl-12 pr-10 py-3 text-base" />
+                {searchQuery && <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"><X className="w-5 h-5" /></button>}
+              </div>
+              <button
+                onClick={() => setFiltersOpen(!filtersOpen)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium transition-all ${filtersOpen || activeFiltersCount > 0 ? 'bg-[#1152d4] text-white border-[#1152d4]' : 'bg-white text-gray-700 border-gray-300 hover:border-[#1152d4]'}`}
+              >
+                <SlidersHorizontal className="w-4 h-4" />
+                Filters
+                {activeFiltersCount > 0 && <span className="bg-white text-[#1152d4] rounded-full w-5 h-5 text-xs flex items-center justify-center font-bold">{activeFiltersCount}</span>}
+                <ChevronDown className={`w-4 h-4 transition-transform ${filtersOpen ? 'rotate-180' : ''}`} />
+              </button>
             </div>
 
-            <div className="bg-[#f8f6f8] rounded-xl p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                  <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1152d4]">
-                    <option value="all">All Categories</option>
-                    <option value="education">Financial Education</option>
-                    <option value="professional">Licensed Professionals</option>
-                    <option value="community">Community Support</option>
-                  </select>
+            {filtersOpen && (
+              <div className="bg-[#f8f6f8] rounded-xl p-5 border border-gray-200">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                    <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1152d4] text-sm">
+                      <option value="all">All Categories</option>
+                      <option value="education">Financial Education</option>
+                      <option value="professional">Licensed Professionals</option>
+                      <option value="community">Community Support</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Service</label>
+                    <select value={selectedService} onChange={e => setSelectedService(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1152d4] text-sm">
+                      <option value="all">All Services</option>
+                      {allServices.map(s => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                    <select value={selectedLocation} onChange={e => setSelectedLocation(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1152d4] text-sm">
+                      <option value="all">All Locations</option>
+                      {allLocations.map(l => <option key={l} value={l}>{l}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Language</label>
+                    <select value={selectedLanguage} onChange={e => setSelectedLanguage(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1152d4] text-sm">
+                      <option value="all">All Languages</option>
+                      {allLanguages.map(l => <option key={l} value={l}>{l}</option>)}
+                    </select>
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Service</label>
-                  <select value={selectedService} onChange={e => setSelectedService(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1152d4]">
-                    <option value="all">All Services</option>
-                    {allServices.map(s => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2"><MapPin className="w-4 h-4 inline mr-1" />Location</label>
-                  <select value={selectedLocation} onChange={e => setSelectedLocation(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1152d4]">
-                    <option value="all">All Locations</option>
-                    {allLocations.map(l => <option key={l} value={l}>{l}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2"><Globe className="w-4 h-4 inline mr-1" />Language</label>
-                  <select value={selectedLanguage} onChange={e => setSelectedLanguage(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1152d4]">
-                    <option value="all">All Languages</option>
-                    {allLanguages.map(l => <option key={l} value={l}>{l}</option>)}
-                  </select>
-                </div>
+                {(activeFiltersCount > 0 || searchQuery) && (
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-sm text-gray-600">{filteredPartners.length} partners found</span>
+                    <Button variant="ghost" size="sm" onClick={clearFilters} className="text-[#1152d4]"><X className="w-4 h-4 mr-1" />Clear all</Button>
+                  </div>
+                )}
               </div>
-              {(activeFiltersCount > 0 || searchQuery) && (
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-sm text-gray-600">{filteredPartners.length} partners found{activeFiltersCount > 0 ? ` (${activeFiltersCount} filter${activeFiltersCount > 1 ? 's' : ''} active)` : ''}</span>
-                  <Button variant="ghost" size="sm" onClick={clearFilters} className="text-[#1152d4]"><X className="w-4 h-4 mr-1" />Clear all</Button>
-                </div>
-              )}
-            </div>
+            )}
+
+            {!filtersOpen && (activeFiltersCount > 0 || searchQuery) && (
+              <p className="text-sm text-gray-600">{filteredPartners.length} partners found</p>
+            )}
           </div>
 
           {/* Results */}
