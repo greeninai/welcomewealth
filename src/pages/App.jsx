@@ -164,33 +164,48 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-              <div className="h-80 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-                <PieChart className="w-24 h-24 text-[#1152d4] opacity-30" />
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80" alt="Budget Overview" className="w-full h-full object-cover" />
               </div>
               <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Budget Overview</h3>
-                <p className="text-gray-600">Track income and expenses with visual charts</p>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
+                    <PieChart className="w-4 h-4 text-[#1152d4]" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900">Budget Overview</h3>
+                </div>
+                <p className="text-gray-600 text-sm">Track income and expenses with visual charts</p>
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-              <div className="h-80 bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center">
-                <BookOpen className="w-24 h-24 text-[#d86c00] opacity-30" />
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&q=80" alt="Learn Library" className="w-full h-full object-cover" />
               </div>
               <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Learn Library</h3>
-                <p className="text-gray-600">Bite-sized lessons on Canadian finances</p>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center">
+                    <BookOpen className="w-4 h-4 text-[#d86c00]" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900">Learn Library</h3>
+                </div>
+                <p className="text-gray-600 text-sm">Bite-sized lessons on Canadian finances</p>
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-              <div className="h-80 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center">
-                <Target className="w-24 h-24 text-[#188a42] opacity-30" />
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Goal Planner" className="w-full h-full object-cover" />
               </div>
               <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Goal Planner</h3>
-                <p className="text-gray-600">Set and track your financial milestones</p>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center">
+                    <Target className="w-4 h-4 text-[#188a42]" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900">Goal Planner</h3>
+                </div>
+                <p className="text-gray-600 text-sm">Set and track your financial milestones</p>
               </div>
             </div>
           </div>
