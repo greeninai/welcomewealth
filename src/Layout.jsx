@@ -88,14 +88,14 @@ function LayoutInner({ children, currentPageName }) {
                             onClick={() => setPartnersDropdownOpen(false)}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           >
-                            Partner Directory
+                            {nt.partnerDirectory}
                           </Link>
                           <Link
                             to={createPageUrl('PartnerApplication')}
                             onClick={() => setPartnersDropdownOpen(false)}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           >
-                            Apply as Partner
+                            {nt.applyAsPartner}
                           </Link>
                         </div>
                       )}
