@@ -180,16 +180,14 @@ export default function Layout({ children, currentPageName }) {
               <div className="px-4 py-2">
                 <LanguageSwitcher />
               </div>
-              {isAdmin && (
-                <Link
-                  to={createPageUrl('AdminDashboard')}
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <LayoutDashboard className="w-4 h-4" />
-                  Admin Panel
-                </Link>
-              )}
+              <Link
+                to={isAdmin ? createPageUrl('AdminDashboard') : createPageUrl('AdminLogin')}
+                className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-[#1152d4] hover:bg-blue-50"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <LayoutDashboard className="w-4 h-4" />
+                Admin Panel
+              </Link>
               <a
                 href="#download"
                 className="block px-4 py-3 bg-[#1152d4] text-white rounded-lg text-base font-medium text-center hover:bg-[#0d3da3]"
