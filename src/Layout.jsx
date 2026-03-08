@@ -40,12 +40,12 @@ function LayoutInner({ children, currentPageName }) {
   const isAdmin = user && isAuthorizedAdmin(user.email);
 
   const navigation = [
-    { name: 'Home', path: 'Home', icon: Home },
-    { name: 'About', path: 'About', icon: Info },
-    { name: 'The App', path: 'App', icon: Smartphone },
-    { name: 'Trusted Partners', path: 'Partners', icon: Users },
-    { name: 'Transparency', path: 'Transparency', icon: DollarSign },
-    { name: 'Blog', path: 'Blog', icon: FileText },
+    { name: nt.home, path: 'Home', icon: Home },
+    { name: nt.about, path: 'About', icon: Info },
+    { name: nt.theApp, path: 'App', icon: Smartphone },
+    { name: nt.trustedPartners, path: 'Partners', icon: Users },
+    { name: nt.transparency, path: 'Transparency', icon: DollarSign },
+    { name: nt.blog, path: 'Blog', icon: FileText },
   ];
 
   return (
