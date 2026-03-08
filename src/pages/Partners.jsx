@@ -35,6 +35,7 @@ export default function Partners() {
   const [selectedService, setSelectedService] = useState('all');
   const [selectedLocation, setSelectedLocation] = useState('all');
   const [selectedLanguage, setSelectedLanguage] = useState('all');
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const { data: partners = [], isLoading } = useQuery({
     queryKey: ['public-partners'],
