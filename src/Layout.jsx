@@ -245,7 +245,7 @@ function LayoutInner({ children, currentPageName }) {
                 />
               </div>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Financial education for everyone. Privacy-first. Ad-free. No pressure.
+                {ft.tagline}
               </p>
             </div>
 
