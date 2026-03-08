@@ -11,6 +11,18 @@ import { isAuthorizedAdmin } from './components/admin/AdminGuard';
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [partnersDropdownOpen, setPartnersDropdownOpen] = React.useState(false);
+  const partnersDropdownRef = React.useRef(null);
+
+  // Close dropdown when clicking outside
+  React.useEffect(() => {
+    function handleClickOutside(event) {
+      if (partnersDropdownRef.current && !partnersDropdownRef.current.contains(event.target)) {
+        setPartnersDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const { data: user } = useQuery({
     queryKey: ['me'],
@@ -48,7 +60,7 @@ export default function Layout({ children, currentPageName }) {
               {navigation.map((item) => {
                 if (item.name === 'Trusted Partners') {
                   return (
-                    <div key={item.name} className="relative">
+                    <div key={item.name} className="relative" ref={partnersDropdownRef}>
                       <button
                         onClick={() => setPartnersDropdownOpen(!partnersDropdownOpen)}
                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center ${
@@ -114,7 +126,7 @@ export default function Layout({ children, currentPageName }) {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100"
+              className="md:hidden p-3 rounded-lg text-gray-700 hover:bg-gray-100 touch-manipulation"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
