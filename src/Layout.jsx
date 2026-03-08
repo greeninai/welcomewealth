@@ -298,6 +298,14 @@ export default function Layout({ children, currentPageName }) {
                 <a href="https://www.greeninco.com" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-[#188a42]">
                   GreenIn Company
                 </a>
+                <span className="text-gray-300">•</span>
+                <Link
+                  to={createPageUrl(isAdmin ? 'AdminDashboard' : 'AdminLogin')}
+                  className="flex items-center gap-1 text-sm text-gray-400 hover:text-[#1152d4] transition-colors"
+                >
+                  <LayoutDashboard className="w-3.5 h-3.5" />
+                  Admin
+                </Link>
               </div>
             </div>
           </div>
