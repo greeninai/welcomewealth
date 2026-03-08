@@ -1,10 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
-import { Shield, Award, Users, BookOpen, CheckCircle, ExternalLink, Search, X, MapPin, Globe, Building2, Loader2 } from 'lucide-react';
+import { Shield, Award, Users, BookOpen, CheckCircle, ExternalLink, Search, X, MapPin, Globe, Building2, Loader2, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import RequestContactForm from '../components/partners/RequestContactForm';
+import { createPageUrl } from '@/utils';
 
 const CATEGORY_META = {
   education: { title: 'Financial Education Organizations', description: 'Non-profit and community organizations focused on financial literacy and education', icon: BookOpen, color: '#d86c00' },
