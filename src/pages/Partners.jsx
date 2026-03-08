@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import RequestContactForm from '../components/partners/RequestContactForm';
 import { createPageUrl } from '@/utils';
+import { Link } from 'react-router-dom';
 
 const CATEGORY_META = {
   education: { title: 'Financial Education Organizations', description: 'Non-profit and community organizations focused on financial literacy and education', icon: BookOpen, color: '#d86c00' },

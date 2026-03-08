@@ -110,6 +110,16 @@ export default function Home() {
               </a>
             </div>
 
+            {/* Scroll indicator */}
+            <div className="flex justify-center mb-8">
+              <button onClick={() => document.querySelector('#how-it-works')?.scrollIntoView({ behavior: 'smooth' })} className="flex flex-col items-center text-gray-400 hover:text-[#1152d4] transition-colors group">
+                <span className="text-xs mb-1 font-medium">Scroll to learn more</span>
+                <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+
             {/* Trust Signals */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
               {trustSignals.map((signal, index) => {
