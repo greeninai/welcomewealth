@@ -10,7 +10,10 @@ import { isAuthorizedAdmin } from './components/admin/AdminGuard';
 import { navTranslations, footerTranslations } from './components/i18n/navTranslations';
 import HreflangTags from './components/i18n/HreflangTags';
 
-export default function Layout({ children, currentPageName }) {
+function LayoutInner({ children, currentPageName }) {
+  const { language } = useLanguage();
+  const nt = navTranslations[language] || navTranslations.en;
+  const ft = footerTranslations[language] || footerTranslations.en;
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [partnersDropdownOpen, setPartnersDropdownOpen] = React.useState(false);
   const partnersDropdownRef = React.useRef(null);
