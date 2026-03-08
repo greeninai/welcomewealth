@@ -272,11 +272,6 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('Terms')} className="text-sm text-gray-600 hover:text-[#1152d4]">Terms of Use</Link></li>
                 <li><Link to={createPageUrl('Accessibility')} className="text-sm text-gray-600 hover:text-[#1152d4]">Accessibility</Link></li>
                 <li><Link to={createPageUrl('Disclaimer')} className="text-sm text-gray-600 hover:text-[#1152d4]">Disclaimer</Link></li>
-                {isAdmin && (
-                  <li className="pt-2 border-t border-gray-100 mt-2">
-                    <Link to={createPageUrl('AdminDashboard')} className="text-sm text-gray-400 hover:text-[#1152d4]">Admin Panel</Link>
-                  </li>
-                )}
               </ul>
             </div>
           </div>
