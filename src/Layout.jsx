@@ -285,7 +285,7 @@ function LayoutInner({ children, currentPageName }) {
           <div className="mt-12 pt-8 border-t border-gray-200">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-sm text-gray-600">
-                © 2026 WelcomeWealth. A social impact initiative by{' '}
+                {ft.copyright}{' '}
                 <a href="https://www.greenin.org" target="_blank" rel="noopener noreferrer" className="text-[#188a42] hover:underline">
                   GreenIn Impact
                 </a>
