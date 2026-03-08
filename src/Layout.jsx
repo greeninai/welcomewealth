@@ -304,7 +304,7 @@ function LayoutInner({ children, currentPageName }) {
                   className="flex items-center gap-1 text-sm text-gray-400 hover:text-[#1152d4] transition-colors"
                 >
                   <LayoutDashboard className="w-3.5 h-3.5" />
-                  Admin
+                  {ft.admin}
                 </Link>
               </div>
             </div>
