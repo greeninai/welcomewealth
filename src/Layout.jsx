@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { Home, Info, Smartphone, Users, DollarSign, FileText, ChevronDown, LayoutDashboard } from 'lucide-react';
 import LanguageSwitcher from './components/LanguageSwitcher';
-import { LanguageProvider } from './components/LanguageContext';
+import { LanguageProvider, useLanguage } from './components/LanguageContext';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { isAuthorizedAdmin } from './components/admin/AdminGuard';
+import { navTranslations, footerTranslations } from './components/i18n/navTranslations';
+import HreflangTags from './components/i18n/HreflangTags';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
