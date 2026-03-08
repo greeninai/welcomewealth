@@ -7,7 +7,7 @@ import { createPageUrl } from '@/utils';
 
 // Authorized domains and emails
 const AUTHORIZED_DOMAINS = ['welcomewealth.ca'];
-const AUTHORIZED_EMAILS = ['greeninco.com@gmail.com'];
+const AUTHORIZED_EMAILS = ['greeninco.com@gmail.com', 'andres.luna@greeninco.com'];
 
 export function isAuthorizedAdmin(email) {
   if (!email) return false;
