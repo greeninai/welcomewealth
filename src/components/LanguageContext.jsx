@@ -1,35 +1,72 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+const COOKIE_NAME = 'ww_lang';
+const SUPPORTED = ['en', 'es', 'pt', 'fr', 'zh', 'ar'];
+
+function getCookie(name) {
+  try {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  } catch { return null; }
+}
+
+function setCookie(name, value, days = 365) {
+  try {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+  } catch {}
+}
+
+function detectBrowserLanguage() {
+  try {
+    const langs = navigator.languages?.length ? navigator.languages : [navigator.language || 'en'];
+    for (const raw of langs) {
+      const lang = raw.toLowerCase();
+      if (lang.startsWith('es')) return 'es';
+      if (lang.startsWith('pt')) return 'pt';
+      if (lang.startsWith('fr')) return 'fr';
+      if (lang.startsWith('zh')) return 'zh';
+      if (lang.startsWith('ar')) return 'ar';
+      if (lang.startsWith('en')) return 'en';
+    }
+  } catch {}
+  return 'en';
+}
+
 const LanguageContext = createContext();
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
+  if (!context) throw new Error('useLanguage must be used within a LanguageProvider');
   return context;
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(() => {
-    // Check localStorage first, then browser language, default to English
-    const saved = localStorage.getItem('welcomewealth_language');
-    if (saved) return saved;
-    
-    const browserLang = navigator.language.split('-')[0];
-    const supported = ['en', 'fr', 'zh', 'es', 'ar', 'pt'];
-    return supported.includes(browserLang) ? browserLang : 'en';
+  const [language, setLanguageState] = useState(() => {
+    // Priority: cookie > localStorage > browser detection > default en
+    const cookie = getCookie(COOKIE_NAME);
+    if (cookie && SUPPORTED.includes(cookie)) return cookie;
+    try {
+      const stored = localStorage.getItem('welcomewealth_language');
+      if (stored && SUPPORTED.includes(stored)) return stored;
+    } catch {}
+    return detectBrowserLanguage();
   });
 
+  const setLanguage = (lang) => {
+    if (!SUPPORTED.includes(lang)) return;
+    setCookie(COOKIE_NAME, lang);
+    try { localStorage.setItem('welcomewealth_language', lang); } catch {}
+    setLanguageState(lang);
+  };
+
   useEffect(() => {
-    localStorage.setItem('welcomewealth_language', language);
-    // Set dir attribute for RTL languages
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
   }, [language]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage, supportedLanguages: SUPPORTED }}>
       {children}
     </LanguageContext.Provider>
   );
