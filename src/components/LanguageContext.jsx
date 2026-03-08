@@ -33,6 +33,27 @@ function detectBrowserLanguage() {
   return 'en';
 }
 
+function getInitialLanguage() {
+  // 1. Check ?lang= query param (for SEO direct access)
+  try {
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang && SUPPORTED.includes(urlLang)) return urlLang;
+  } catch {}
+
+  // 2. Cookie (highest user preference priority)
+  const cookie = getCookie(COOKIE_NAME);
+  if (cookie && SUPPORTED.includes(cookie)) return cookie;
+
+  // 3. localStorage fallback
+  try {
+    const stored = localStorage.getItem('welcomewealth_language');
+    if (stored && SUPPORTED.includes(stored)) return stored;
+  } catch {}
+
+  // 4. Browser language detection
+  return detectBrowserLanguage();
+}
+
 const LanguageContext = createContext();
 
 export const useLanguage = () => {
@@ -42,16 +63,7 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguageState] = useState(() => {
-    // Priority: cookie > localStorage > browser detection > default en
-    const cookie = getCookie(COOKIE_NAME);
-    if (cookie && SUPPORTED.includes(cookie)) return cookie;
-    try {
-      const stored = localStorage.getItem('welcomewealth_language');
-      if (stored && SUPPORTED.includes(stored)) return stored;
-    } catch {}
-    return detectBrowserLanguage();
-  });
+  const [language, setLanguageState] = useState(getInitialLanguage);
 
   const setLanguage = (lang) => {
     if (!SUPPORTED.includes(lang)) return;
@@ -63,6 +75,9 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
+    // Persist on initial load
+    setCookie(COOKIE_NAME, language);
+    try { localStorage.setItem('welcomewealth_language', language); } catch {}
   }, [language]);
 
   return (
