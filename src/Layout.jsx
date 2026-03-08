@@ -26,7 +26,11 @@ export default function Layout({ children, currentPageName }) {
 
   const { data: user } = useQuery({
     queryKey: ['me'],
-    queryFn: async () => { try { return await base44.auth.me(); } catch { return null; } },
+    queryFn: async () => {
+      try { return await base44.auth.me(); } catch { return null; }
+    },
+    retry: false,
+    staleTime: 60000,
   });
   const isAdmin = user && isAuthorizedAdmin(user.email);
 
