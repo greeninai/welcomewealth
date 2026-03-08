@@ -121,17 +121,17 @@ function LayoutInner({ children, currentPageName }) {
                 <Link
                   to={createPageUrl('AdminDashboard')}
                   className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-[#1152d4] hover:bg-blue-50 transition-colors"
-                  title="Admin Panel"
+                  title={nt.adminPanel}
                 >
                   <LayoutDashboard className="w-4 h-4" />
-                  Admin
+                  {nt.admin}
                 </Link>
               )}
               <a
                 href="#download"
                 className="ml-2 px-6 py-2 bg-[#1152d4] text-white rounded-lg text-sm font-medium hover:bg-[#0d3da3] transition-colors"
               >
-                Download App
+                {nt.downloadApp}
               </a>
             </div>
 
