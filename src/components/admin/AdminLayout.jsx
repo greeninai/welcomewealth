@@ -96,11 +96,13 @@ export default function AdminLayout({ children, currentPage }) {
       {/* Logo area */}
       <div className="px-6 py-5 border-b border-gray-800">
         <div className="flex items-center gap-3">
-          <img
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/f35f84552_WelcomeWealth_Logo.png"
-            alt="WelcomeWealth"
-            className="h-7 brightness-200"
-          />
+          <div className="bg-white rounded-md p-1 shadow-sm">
+            <img
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/867959765_WelcomeWealth_Symbol.png"
+              alt="WelcomeWealth Symbol"
+              className="h-6 w-6"
+            />
+          </div>
           <span className="text-xs font-bold text-white/60 bg-white/10 px-2 py-0.5 rounded-full">ADMIN</span>
         </div>
       </div>
@@ -186,11 +188,13 @@ export default function AdminLayout({ children, currentPage }) {
           <button onClick={() => setSidebarOpen(true)} className="text-white/70 hover:text-white">
             <Menu className="w-5 h-5" />
           </button>
-          <img
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/f35f84552_WelcomeWealth_Logo.png"
-            alt="WelcomeWealth"
-            className="h-6 brightness-200"
-          />
+          <div className="bg-white rounded-md p-1 shadow-sm">
+            <img
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/867959765_WelcomeWealth_Symbol.png"
+              alt="WelcomeWealth Symbol"
+              className="h-5 w-5"
+            />
+          </div>
           <span className="text-xs font-bold text-white/60 bg-white/10 px-2 py-0.5 rounded-full">ADMIN</span>
         </div>
 

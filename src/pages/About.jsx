@@ -46,7 +46,7 @@ export default function About() {
       <section className="bg-gradient-to-br from-white to-blue-50 py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <img 
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/9391760f3_WelcomeWealth_Symbol.png" 
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/867959765_WelcomeWealth_Symbol.png" 
             alt="WelcomeWealth Symbol"
             className="w-24 h-24 mx-auto mb-8"
           />
@@ -204,6 +204,11 @@ export default function About() {
       {/* Relationship with GreenIn */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <img 
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/ba0228ae0_Logo_WW_GreenIn.png" 
+            alt="WelcomeWealth & GreenIn"
+            className="h-16 mx-auto mb-8"
+          />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
             Relationship with GreenIn
           </h2>

@@ -69,11 +69,13 @@ export default function AdminLogin() {
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           {/* Top banner */}
           <div className="bg-gradient-to-r from-[#0d1f4e] to-[#1152d4] px-8 py-8 text-center">
-            <img
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/f35f84552_WelcomeWealth_Logo.png"
-              alt="WelcomeWealth"
-              className="h-10 mx-auto mb-4 brightness-200"
-            />
+            <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <img
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/867959765_WelcomeWealth_Symbol.png"
+                alt="WelcomeWealth Symbol"
+                className="h-14 w-14"
+              />
+            </div>
             <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
               <Lock className="w-3 h-3" />
               ÁREA ADMINISTRATIVA

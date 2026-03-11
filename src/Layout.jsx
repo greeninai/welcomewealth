@@ -58,8 +58,8 @@ function LayoutInner({ children, currentPageName }) {
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center space-x-2">
               <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/f35f84552_WelcomeWealth_Logo.png" 
-                alt="WelcomeWealth"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/867959765_WelcomeWealth_Symbol.png" 
+                alt="WelcomeWealth Symbol"
                 className="h-8 md:h-10"
               />
             </Link>
@@ -221,8 +221,8 @@ function LayoutInner({ children, currentPageName }) {
             <div className="md:col-span-1">
               <div className="mb-4">
                 <img 
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/f35f84552_WelcomeWealth_Logo.png" 
-                  alt="WelcomeWealth"
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6986a2ab487be21fdd4ca463/66e0f624d_WelcomeWealth_Logo.png" 
+                  alt="WelcomeWealth Logo"
                   className="h-8"
                 />
               </div>
