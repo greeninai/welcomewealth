@@ -226,9 +226,12 @@ function LayoutInner({ children, currentPageName }) {
                   className="h-8"
                 />
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed mb-4">
                 {ft.tagline}
               </p>
+              <a href="https://www.welcomewealth.ca" target="_blank" rel="noopener noreferrer" className="text-sm text-[#1152d4] hover:underline font-medium">
+                www.welcomewealth.ca
+              </a>
             </div>
 
             {/* About */}
