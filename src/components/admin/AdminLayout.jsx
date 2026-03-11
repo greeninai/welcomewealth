@@ -25,6 +25,8 @@ export default function AdminLayout({ children, currentPage }) {
   const { data: user, isLoading } = useQuery({
     queryKey: ['me'],
     queryFn: async () => { try { return await base44.auth.me(); } catch { return null; } },
+    retry: false,
+    staleTime: 60000,
   });
 
   const isAdmin = user && isAuthorizedAdmin(user.email);
