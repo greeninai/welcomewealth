@@ -77,7 +77,7 @@ export default function AdminLayout({ children, currentPage }) {
           <p className="text-gray-500 mb-2">Área exclusiva para administradores de WelcomeWealth.</p>
           <p className="text-xs text-gray-400 mb-6">Estás conectado con una cuenta no autorizada.</p>
           <div className="space-y-3">
-            <button onClick={() => base44.auth.logout()} className="w-full px-6 py-3 bg-[#1152d4] text-white rounded-lg font-medium hover:bg-[#0d3da3]">
+            <button onClick={() => base44.auth.logout(window.location.origin + createPageUrl('Home'))} className="w-full px-6 py-3 bg-[#1152d4] text-white rounded-lg font-medium hover:bg-[#0d3da3]">
               Cerrar sesión
             </button>
             <Link to={createPageUrl('Home')} className="block px-6 py-3 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50">
@@ -144,7 +144,7 @@ export default function AdminLayout({ children, currentPage }) {
           </div>
         </div>
         <button
-          onClick={() => base44.auth.logout()}
+          onClick={() => base44.auth.logout(window.location.origin + createPageUrl('AdminLogin'))}
           className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-white/60 hover:bg-white/10 hover:text-white text-sm font-medium transition-all"
         >
           <LogOut className="w-4 h-4" />

@@ -117,16 +117,7 @@ function LayoutInner({ children, currentPageName }) {
                 );
               })}
               <LanguageSwitcher />
-              {isAdmin && (
-                <Link
-                  to={createPageUrl('AdminDashboard')}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-[#1152d4] hover:bg-blue-50 transition-colors"
-                  title={nt.adminPanel}
-                >
-                  <LayoutDashboard className="w-4 h-4" />
-                  {nt.admin}
-                </Link>
-              )}
+
               <a
                 href="#download"
                 className="ml-2 px-6 py-2 bg-[#1152d4] text-white rounded-lg text-sm font-medium hover:bg-[#0d3da3] transition-colors"
@@ -204,16 +195,7 @@ function LayoutInner({ children, currentPageName }) {
               <div className="px-4 py-2">
                 <LanguageSwitcher />
               </div>
-              {isAdmin && (
-                <Link
-                  to={createPageUrl('AdminDashboard')}
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-gray-500 hover:bg-gray-100"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <LayoutDashboard className="w-4 h-4" />
-                  {nt.adminPanel}
-                </Link>
-              )}
+
               <a
                 href="#download"
                 className="block px-4 py-3 bg-[#1152d4] text-white rounded-lg text-base font-medium text-center hover:bg-[#0d3da3]"
@@ -300,7 +282,7 @@ function LayoutInner({ children, currentPageName }) {
                 </a>
                 <span className="text-gray-300">•</span>
                 <Link
-                  to={createPageUrl(isAdmin ? 'AdminDashboard' : 'AdminLogin')}
+                  to={createPageUrl('AdminLogin')}
                   className="flex items-center gap-1 text-sm text-gray-400 hover:text-[#1152d4] transition-colors"
                 >
                   <LayoutDashboard className="w-3.5 h-3.5" />
