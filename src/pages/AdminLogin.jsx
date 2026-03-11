@@ -45,7 +45,7 @@ export default function AdminLogin() {
           </p>
           <div className="space-y-3">
             <button
-              onClick={() => base44.auth.logout()}
+              onClick={() => base44.auth.logout(window.location.origin + createPageUrl('Home'))}
               className="w-full px-6 py-3 bg-[#1152d4] text-white rounded-xl font-medium hover:bg-[#0d3da3] transition-colors"
             >
               Cerrar sesión e intentar con otra cuenta
