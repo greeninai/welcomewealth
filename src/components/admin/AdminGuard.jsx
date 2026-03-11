@@ -48,7 +48,7 @@ export default function AdminGuard({ children }) {
           <p className="text-sm text-gray-400 mb-6">Estás conectado con una cuenta no autorizada.</p>
           <div className="space-y-3">
             <button
-              onClick={() => base44.auth.logout(createPageUrl('AdminLogin'))}
+              onClick={() => base44.auth.logout(window.location.origin + createPageUrl('AdminLogin'))}
               className="w-full px-6 py-3 bg-[#1152d4] text-white rounded-xl font-medium hover:bg-[#0d3da3] transition-colors"
             >
               Cerrar sesión e intentar con otra cuenta

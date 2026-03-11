@@ -18,7 +18,7 @@ export default function AdminLogin() {
     if (!isLoading && user && isAuthorizedAdmin(user.email)) {
       navigate(createPageUrl('AdminDashboard'), { replace: true });
     }
-  }, [isLoading, user]);
+  }, [isLoading, user, navigate]);
 
   if (isLoading) {
     return (
@@ -93,7 +93,7 @@ export default function AdminLogin() {
             </div>
 
             <button
-              onClick={() => base44.auth.redirectToLogin(window.location.origin + createPageUrl('AdminLogin'))}
+              onClick={() => base44.auth.redirectToLogin(window.location.href)}
               className="w-full py-3.5 bg-[#1152d4] text-white rounded-xl font-semibold hover:bg-[#0d3da3] transition-colors shadow-md shadow-blue-200 mb-4"
             >
               Iniciar sesión con cuenta autorizada

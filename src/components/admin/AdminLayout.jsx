@@ -54,7 +54,7 @@ export default function AdminLayout({ children, currentPage }) {
     if (!isLoading && !user) {
       navigate(createPageUrl('AdminLogin'), { replace: true });
     }
-  }, [isLoading, user]);
+  }, [isLoading, user, navigate]);
 
   if (isLoading) {
     return (
