@@ -1,0 +1,68 @@
+{
+  "name": "BlogPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Article title"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly identifier"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Short summary of the article"
+    },
+    "content": {
+      "type": "string",
+      "description": "Full article content in markdown"
+    },
+    "featured_image": {
+      "type": "string",
+      "description": "URL of the featured image"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Financial Education",
+        "Community Resilience",
+        "Responsible Innovation",
+        "GreenIn Impact News"
+      ],
+      "description": "Article category"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author name"
+    },
+    "author_title": {
+      "type": "string",
+      "description": "Author job title"
+    },
+    "read_time": {
+      "type": "number",
+      "description": "Estimated reading time in minutes"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this is a featured article"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published"
+      ],
+      "default": "published",
+      "description": "Publication status"
+    }
+  },
+  "required": [
+    "title",
+    "excerpt",
+    "category",
+    "content"
+  ]
+}

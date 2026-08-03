@@ -1,0 +1,90 @@
+{
+  "name": "Partner",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Organization name"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "education",
+        "professional",
+        "community"
+      ],
+      "description": "Partner category"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description"
+    },
+    "website": {
+      "type": "string",
+      "description": "Website URL"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "location": {
+      "type": "string",
+      "description": "City, Province"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Languages supported"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Services offered"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false,
+      "description": "Verified status"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Featured in directory"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "suspended"
+      ],
+      "default": "active",
+      "description": "Partner status"
+    },
+    "contribution_model": {
+      "type": "string",
+      "enum": [
+        "option-a",
+        "option-b",
+        "option-c"
+      ],
+      "description": "Contribution model"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal notes"
+    }
+  },
+  "required": [
+    "name",
+    "category"
+  ]
+}

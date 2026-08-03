@@ -1,0 +1,42 @@
+{
+  "name": "AuditLog",
+  "type": "object",
+  "properties": {
+    "admin_email": {
+      "type": "string",
+      "description": "Email of the admin who performed the action"
+    },
+    "admin_name": {
+      "type": "string",
+      "description": "Full name of the admin"
+    },
+    "action": {
+      "type": "string",
+      "description": "Action performed (e.g. create, update, delete, login, status_change)"
+    },
+    "entity_type": {
+      "type": "string",
+      "description": "Type of entity affected (e.g. Partner, BlogPost, ContactLead)"
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "ID of the affected record"
+    },
+    "entity_name": {
+      "type": "string",
+      "description": "Human-readable name/title of the affected record"
+    },
+    "details": {
+      "type": "string",
+      "description": "Additional details or changes summary"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "IP address (if available)"
+    }
+  },
+  "required": [
+    "admin_email",
+    "action"
+  ]
+}

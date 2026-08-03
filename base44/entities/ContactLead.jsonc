@@ -1,0 +1,121 @@
+{
+  "name": "ContactLead",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Lead full name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Lead email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Lead phone number"
+    },
+    "city": {
+      "type": "string",
+      "description": "City in Canada"
+    },
+    "province": {
+      "type": "string",
+      "enum": [
+        "AB",
+        "BC",
+        "MB",
+        "NB",
+        "NL",
+        "NS",
+        "NT",
+        "NU",
+        "ON",
+        "PE",
+        "QC",
+        "SK",
+        "YT"
+      ],
+      "description": "Canadian province or territory"
+    },
+    "preferred_language": {
+      "type": "string",
+      "description": "Preferred language for communication"
+    },
+    "partner_category": {
+      "type": "string",
+      "enum": [
+        "education",
+        "professional",
+        "community"
+      ],
+      "description": "Requested partner category"
+    },
+    "services_needed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific services the user is looking for"
+    },
+    "preferred_contact_method": {
+      "type": "string",
+      "enum": [
+        "email",
+        "phone",
+        "either"
+      ],
+      "default": "email",
+      "description": "Preferred contact method"
+    },
+    "urgency": {
+      "type": "string",
+      "enum": [
+        "not_urgent",
+        "within_month",
+        "within_week",
+        "urgent"
+      ],
+      "default": "within_month",
+      "description": "How urgent is the need"
+    },
+    "message": {
+      "type": "string",
+      "description": "Message from the lead"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "partners_page",
+        "contact_form",
+        "other"
+      ],
+      "default": "partners_page",
+      "description": "Where the lead came from"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "resolved",
+        "archived"
+      ],
+      "default": "new",
+      "description": "Lead status"
+    },
+    "consent_given": {
+      "type": "boolean",
+      "default": false,
+      "description": "User gave explicit consent for data sharing"
+    },
+    "admin_notes": {
+      "type": "string",
+      "description": "Internal admin notes"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "consent_given"
+  ]
+}
