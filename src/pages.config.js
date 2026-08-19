@@ -58,6 +58,7 @@ import Blog from './pages/Blog';
 import BlogAdmin from './pages/BlogAdmin';
 import BlogPost from './pages/BlogPost';
 import Disclaimer from './pages/Disclaimer';
+import FAQ from './pages/FAQ';
 import Home from './pages/Home';
 import LeadsAdmin from './pages/LeadsAdmin';
 import PartnerApplication from './pages/PartnerApplication';
@@ -81,6 +82,7 @@ export const PAGES = {
     "BlogAdmin": BlogAdmin,
     "BlogPost": BlogPost,
     "Disclaimer": Disclaimer,
+    "FAQ": FAQ,
     "Home": Home,
     "LeadsAdmin": LeadsAdmin,
     "PartnerApplication": PartnerApplication,

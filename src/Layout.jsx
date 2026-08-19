@@ -258,6 +258,7 @@ function LayoutInner({ children, currentPageName }) {
               <ul className="space-y-2">
                 <li><Link to={createPageUrl('Partners')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.trustedPartners}</Link></li>
                 <li><Link to={createPageUrl('PartnerApplication')} className="text-sm text-gray-600 hover:text-[#1152d4]">{ft.becomePartner}</Link></li>
+                <li><Link to={createPageUrl('FAQ')} className="text-sm text-gray-600 hover:text-[#1152d4]">FAQ</Link></li>
               </ul>
             </div>
 

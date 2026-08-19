@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Search, X, FileText, Info, Users, DollarSign, Smartphone, BookOpen, Shield, Heart, Scale, Accessibility } from 'lucide-react';
+import { Search, X, FileText, Info, Users, DollarSign, Smartphone, BookOpen, Shield, Heart, Scale, Accessibility, HelpCircle } from 'lucide-react';
 
 const INFO_PAGES = [
   { title: 'Home', path: 'Home', icon: BookOpen, keywords: 'home welcome wealth inicio' },
@@ -13,6 +13,7 @@ const INFO_PAGES = [
   { title: 'Apply as Partner', path: 'PartnerApplication', icon: Users, keywords: 'apply partner application socios aplicar' },
   { title: 'Transparency', path: 'Transparency', icon: DollarSign, keywords: 'transparency funding contributions report transparencia' },
   { title: 'Blog', path: 'Blog', icon: FileText, keywords: 'blog articles insights noticias' },
+  { title: 'FAQ', path: 'FAQ', icon: HelpCircle, keywords: 'faq questions help preguntas frecuentes' },
   { title: 'Privacy Policy', path: 'Privacy', icon: Shield, keywords: 'privacy policy data privacidad' },
   { title: 'Terms of Use', path: 'Terms', icon: Scale, keywords: 'terms use legal terminos' },
   { title: 'Accessibility', path: 'Accessibility', icon: Accessibility, keywords: 'accessibility aoda wcag accesibilidad' },
