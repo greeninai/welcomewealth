@@ -9,6 +9,7 @@ import { base44 } from '@/api/base44Client';
 import { isAuthorizedAdmin } from './components/admin/AdminGuard';
 import { navTranslations, footerTranslations } from './components/i18n/navTranslations';
 import HreflangTags from './components/i18n/HreflangTags';
+import GlobalSearch from './components/GlobalSearch';
 
 function LayoutInner({ children, currentPageName }) {
   const { language } = useLanguage();
@@ -66,6 +67,7 @@ function LayoutInner({ children, currentPageName }) {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
+              <GlobalSearch />
               {navigation.map((item) => {
                 if (item.name === 'Trusted Partners' || item.path === 'Partners') {
                   return (
@@ -124,6 +126,11 @@ function LayoutInner({ children, currentPageName }) {
               >
                 {nt.downloadApp}
               </a>
+            </div>
+
+            {/* Mobile search */}
+            <div className="md:hidden">
+              <GlobalSearch />
             </div>
 
             {/* Mobile menu button */}
