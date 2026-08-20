@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
-import { BookOpen, Users, Lightbulb, Leaf, Loader2, Settings } from 'lucide-react';
+import { BookOpen, Users, Megaphone, Loader2, Settings } from 'lucide-react';
 import BlogCard from '../components/blog/BlogCard';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 
 const categories = [
   { id: 'all', label: 'All Articles' },
-  { id: 'Financial Education', label: 'Financial Education', icon: BookOpen, color: '#1152d4' },
-  { id: 'Community Resilience', label: 'Community Resilience', icon: Users, color: '#188a42' },
-  { id: 'Responsible Innovation', label: 'Responsible Innovation', icon: Lightbulb, color: '#d86c00' },
-  { id: 'GreenIn Impact News', label: 'GreenIn Impact News', icon: Leaf, color: '#7c3aed' },
+  { id: 'Financial Literacy', label: 'Financial Literacy', icon: BookOpen, color: '#1152d4' },
+  { id: 'Newcomer Tips', label: 'Newcomer Tips', icon: Users, color: '#188a42' },
+  { id: 'Community Updates', label: 'Community Updates', icon: Megaphone, color: '#d86c00' },
 ];
 
 export default function Blog() {
@@ -50,7 +49,7 @@ export default function Blog() {
             Insights & Resources
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Articles on financial education, community resilience, responsible innovation, and the GreenIn Impact programs.
+            Articles on financial literacy, newcomer tips, and community updates to help you navigate life in Canada.
           </p>
           {user?.role === 'admin' && (
             <div className="mt-6">

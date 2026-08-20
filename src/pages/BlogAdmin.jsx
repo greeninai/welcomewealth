@@ -11,12 +11,12 @@ import AdminLayout from '../components/admin/AdminLayout';
 
 const EMPTY_FORM = {
   title: '', slug: '', excerpt: '', content: '', featured_image: '',
-  category: 'Financial Education', author: '', author_title: '',
+  category: 'Financial Literacy', author: '', author_title: '',
   read_time: 5, featured: false, status: 'published',
 };
 
 const categoryOptions = [
-  'Financial Education', 'Community Resilience', 'Responsible Innovation', 'GreenIn Impact News',
+  'Financial Literacy', 'Newcomer Tips', 'Community Updates',
 ];
 
 function slugify(text) {

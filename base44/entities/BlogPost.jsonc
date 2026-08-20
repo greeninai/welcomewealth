@@ -25,10 +25,9 @@
     "category": {
       "type": "string",
       "enum": [
-        "Financial Education",
-        "Community Resilience",
-        "Responsible Innovation",
-        "GreenIn Impact News"
+        "Financial Literacy",
+        "Newcomer Tips",
+        "Community Updates"
       ],
       "description": "Article category"
     },

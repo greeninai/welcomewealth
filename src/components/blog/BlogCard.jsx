@@ -4,10 +4,9 @@ import { createPageUrl } from '@/utils';
 import { Clock, ArrowRight } from 'lucide-react';
 
 export const categoryColors = {
-  'Financial Education': { bg: '#1152d415', text: '#1152d4', border: '#1152d430' },
-  'Community Resilience': { bg: '#188a4215', text: '#188a42', border: '#188a4230' },
-  'Responsible Innovation': { bg: '#d86c0015', text: '#d86c00', border: '#d86c0030' },
-  'GreenIn Impact News': { bg: '#7c3aed15', text: '#7c3aed', border: '#7c3aed30' },
+  'Financial Literacy': { bg: '#1152d415', text: '#1152d4', border: '#1152d430' },
+  'Newcomer Tips': { bg: '#188a4215', text: '#188a42', border: '#188a4230' },
+  'Community Updates': { bg: '#d86c0015', text: '#d86c00', border: '#d86c0030' },
 };
 
 export default function BlogCard({ post, featured = false }) {
