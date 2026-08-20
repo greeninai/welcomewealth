@@ -2,6 +2,7 @@ import React from 'react';
 import { Shield, BookOpen, Target, Lock, Award, TrendingUp, PieChart, Heart, ArrowRight, CheckCircle, Users, Globe } from 'lucide-react';
 import { useLanguage } from '../components/LanguageContext';
 import { homeTranslations } from '../components/translations';
+import Testimonials from '../components/home/Testimonials';
 
 export default function Home() {
   const { language } = useLanguage();
@@ -291,6 +292,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <Testimonials t={t} />
 
       {/* Final CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-[#1152d4] to-[#0d3da3]">

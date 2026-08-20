@@ -54,6 +54,33 @@ export const homeTranslations = {
         { title: 'Lifelong learners', desc: 'Never too late to understand your money better' },
       ],
     },
+    testimonials: {
+      title: 'Real stories from our community',
+      subtitle: 'See how WelcomeWealth helps people build financial confidence — at their own pace, with no pressure.',
+      items: [
+        {
+          quote: 'When I arrived in Canada, I felt lost with banking and credit. WelcomeWealth explained everything in plain words. No one tried to sell me anything — they just helped me understand.',
+          name: 'Amara Okafor',
+          role: 'Newcomer from Nigeria · Toronto, ON',
+          initials: 'AO',
+          avatarColor: '#1152d4',
+        },
+        {
+          quote: 'I was nervous about my finances after college. The budget builder was so simple, and I finally feel in control. No ads, no pressure — just clear guidance.',
+          name: 'Daniel Tremblay',
+          role: 'Young professional · Montréal, QC',
+          initials: 'DT',
+          avatarColor: '#188a42',
+        },
+        {
+          quote: 'As a senior, I wanted to understand my retirement savings better. The articles are patient and respectful. I never felt judged for what I didn\'t know.',
+          name: 'Mei-Ling Chen',
+          role: 'Retiree · Vancouver, BC',
+          initials: 'MC',
+          avatarColor: '#d86c00',
+        },
+      ],
+    },
     finalCTA: {
       title: 'Ready to take control?',
       subtitle: 'Join thousands of Canadians building financial confidence, one step at a time.',
@@ -113,6 +140,33 @@ export const homeTranslations = {
         { title: 'Immigrants et réfugiés', desc: 'Comprendre les finances canadiennes en langage clair' },
         { title: 'Jeunes adultes', desc: 'Construire des habitudes financières durables' },
         { title: 'Apprenants tout au long de la vie', desc: 'Il n\'est jamais trop tard pour mieux comprendre votre argent' },
+      ],
+    },
+    testimonials: {
+      title: 'Témoignages de notre communauté',
+      subtitle: 'Découvrez comment WelcomeWealth aide les gens à bâtir leur confiance financière — à leur rythme, sans pression.',
+      items: [
+        {
+          quote: 'À mon arrivée au Canada, je me sentais perdu avec les banques et le crédit. WelcomeWealth m\'a tout expliqué en mots simples. Personne n\'a essayé de me vendre quoi que ce soit — juste m\'aider à comprendre.',
+          name: 'Amara Okafor',
+          role: 'Nouvelle arrivante du Nigeria · Toronto, ON',
+          initials: 'AO',
+          avatarColor: '#1152d4',
+        },
+        {
+          quote: 'J\'étais nerveux pour mes finances après l\'université. Le créateur de budget était si simple, et je me sens enfin en contrôle. Pas de pub, pas de pression — juste des conseils clairs.',
+          name: 'Daniel Tremblay',
+          role: 'Jeune professionnel · Montréal, QC',
+          initials: 'DT',
+          avatarColor: '#188a42',
+        },
+        {
+          quote: 'Comme senior, je voulais mieux comprendre mes épargnes de retraite. Les articles sont patients et respectueux. Je ne me suis jamais senti jugé pour ce que je ne savais pas.',
+          name: 'Mei-Ling Chen',
+          role: 'Retraitée · Vancouver, BC',
+          initials: 'MC',
+          avatarColor: '#d86c00',
+        },
       ],
     },
     finalCTA: {
@@ -176,6 +230,33 @@ export const homeTranslations = {
         { title: '终身学习者', desc: '更好地理解您的金钱永远不会太晚' },
       ],
     },
+    testimonials: {
+      title: '来自我们社区的真实故事',
+      subtitle: '了解 WelcomeWealth 如何帮助人们建立财务信心 — 按自己的节奏，没有压力。',
+      items: [
+        {
+          quote: '刚到加拿大时，我对银行和信用感到迷茫。WelcomeWealth 用简单的语言解释了一切。没有人试图向我推销任何东西 — 他们只是帮助我理解。',
+          name: 'Amara Okafor',
+          role: '来自尼日利亚的新移民 · 多伦多, 安大略省',
+          initials: 'AO',
+          avatarColor: '#1152d4',
+        },
+        {
+          quote: '大学毕业后，我对自己的财务感到紧张。预算构建器非常简单，我终于感到掌控了一切。没有广告，没有压力 — 只有清晰的指导。',
+          name: 'Daniel Tremblay',
+          role: '年轻专业人士 · 蒙特利尔, 魁北克省',
+          initials: 'DT',
+          avatarColor: '#188a42',
+        },
+        {
+          quote: '作为一位老年人，我想更好地了解我的退休储蓄。文章耐心而尊重。我从没因为不知道的事情而感到被评判。',
+          name: 'Mei-Ling Chen',
+          role: '退休人士 · 温哥华, 不列颠哥伦比亚省',
+          initials: 'MC',
+          avatarColor: '#d86c00',
+        },
+      ],
+    },
     finalCTA: {
       title: '准备好掌控了吗？',
       subtitle: '加入成千上万正在建立财务信心的加拿大人，一步一个脚印。',
@@ -235,6 +316,33 @@ export const homeTranslations = {
         { title: 'Inmigrantes y refugiados', desc: 'Comprende las finanzas canadienses en lenguaje sencillo' },
         { title: 'Adultos jóvenes', desc: 'Construye hábitos financieros que duren toda la vida' },
         { title: 'Aprendices de por vida', desc: 'Nunca es tarde para entender mejor tu dinero' },
+      ],
+    },
+    testimonials: {
+      title: 'Historias reales de nuestra comunidad',
+      subtitle: 'Descubre cómo WelcomeWealth ayuda a las personas a construir confianza financiera — a su propio ritmo, sin presión.',
+      items: [
+        {
+          quote: 'Cuando llegué a Canadá, me sentía perdido con la banca y el crédito. WelcomeWealth me lo explicó todo en palabras simples. Nadie intentó venderme nada — solo me ayudaron a entender.',
+          name: 'Amara Okafor',
+          role: 'Recién llegada de Nigeria · Toronto, ON',
+          initials: 'AO',
+          avatarColor: '#1152d4',
+        },
+        {
+          quote: 'Estaba nervioso por mis finanzas después de la universidad. El constructor de presupuesto fue tan simple, y finalmente siento que tengo el control. Sin anuncios, sin presión — solo orientación clara.',
+          name: 'Daniel Tremblay',
+          role: 'Profesional joven · Montreal, QC',
+          initials: 'DT',
+          avatarColor: '#188a42',
+        },
+        {
+          quote: 'Como persona mayor, quería entender mejor mis ahorros para el retiro. Los artículos son pacientes y respetuosos. Nunca me sentí juzgado por lo que no sabía.',
+          name: 'Mei-Ling Chen',
+          role: 'Jubilada · Vancouver, BC',
+          initials: 'MC',
+          avatarColor: '#d86c00',
+        },
       ],
     },
     finalCTA: {
@@ -298,6 +406,33 @@ export const homeTranslations = {
         { title: 'المتعلمون مدى الحياة', desc: 'لم يفت الأوان أبدًا لفهم أموالك بشكل أفضل' },
       ],
     },
+    testimonials: {
+      title: 'قصص حقيقية من مجتمعنا',
+      subtitle: 'اكتشف كيف يساعد WelcomeWealth الناس على بناء الثقة المالية — بسرعتهم الخاصة، دون ضغط.',
+      items: [
+        {
+          quote: 'عند وصولي إلى كندا، كنت أشعر بالضياع في البنوك والائتمان. شرح لي WelcomeWealth كل شيء بكلمات بسيطة. لم يحاول أحد بيعي أي شيء — لقد ساعدوني فقط على الفهم.',
+          name: 'أمارا أوكافور',
+          role: 'وافدة جديدة من نيجيريا · تورنتو، أونتاريو',
+          initials: 'AO',
+          avatarColor: '#1152d4',
+        },
+        {
+          quote: 'كنت قلقاً بشأن أموالي بعد التخرج. كان منشئ الميزانية بسيطاً جداً، وأخيراً أشعر أنني في السيطرة. لا إعلانات، لا ضغط — فقط إرشادات واضحة.',
+          name: 'دانيال ترمبلي',
+          role: 'محترف شاب · مونتريال، كيبيك',
+          initials: 'DT',
+          avatarColor: '#188a42',
+        },
+        {
+          quote: 'كبير في السن، أردت فهم مدخرات التقاعد بشكل أفضل. المقالات صبورة ومحترمة. لم أشعر أبداً بالحكم عليّ لما لم أكن أعرفه.',
+          name: 'مي-لينغ تشين',
+          role: 'متقاعدة · فانكوفر، كولومبيا البريطانية',
+          initials: 'MC',
+          avatarColor: '#d86c00',
+        },
+      ],
+    },
     finalCTA: {
       title: 'هل أنت مستعد لتولي السيطرة؟',
       subtitle: 'انضم إلى آلاف الكنديين الذين يبنون الثقة المالية، خطوة واحدة في كل مرة.',
@@ -357,6 +492,33 @@ export const homeTranslations = {
         { title: 'Imigrantes e refugiados', desc: 'Entenda as finanças canadenses em linguagem simples' },
         { title: 'Adultos jovens', desc: 'Construa hábitos financeiros que durem a vida toda' },
         { title: 'Aprendizes ao longo da vida', desc: 'Nunca é tarde para entender melhor seu dinheiro' },
+      ],
+    },
+    testimonials: {
+      title: 'Histórias reais da nossa comunidade',
+      subtitle: 'Veja como o WelcomeWealth ajuda as pessoas a construir confiança financeira — no seu próprio ritmo, sem pressão.',
+      items: [
+        {
+          quote: 'Quando cheguei ao Canadá, me sentia perdido com bancos e crédito. O WelcomeWealth explicou tudo em palavras simples. Ninguém tentou me vender nada — apenas me ajudaram a entender.',
+          name: 'Amara Okafor',
+          role: 'Recém-chegada da Nigéria · Toronto, ON',
+          initials: 'AO',
+          avatarColor: '#1152d4',
+        },
+        {
+          quote: 'Estava nervoso com minhas finanças depois da faculdade. O construtor de orçamento era tão simples, e finalmente sinto que estou no controle. Sem anúncios, sem pressão — apenas orientação clara.',
+          name: 'Daniel Tremblay',
+          role: 'Jovem profissional · Montreal, QC',
+          initials: 'DT',
+          avatarColor: '#188a42',
+        },
+        {
+          quote: 'Como idoso, queria entender melhor minhas poupanças de aposentadoria. Os artigos são pacientes e respeitosos. Nunca me senti julgado pelo que não sabia.',
+          name: 'Mei-Ling Chen',
+          role: 'Aposentada · Vancouver, BC',
+          initials: 'MC',
+          avatarColor: '#d86c00',
+        },
       ],
     },
     finalCTA: {
